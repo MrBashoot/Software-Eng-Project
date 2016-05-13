@@ -4,15 +4,32 @@
 "use strict";
 class item{
 
-    var itemId,title,year,loaned,reserved,status;
+    var itemId,title,year,loaned,reserved,status,type,MAX_LOAN;
 
-    constructor (itemId,title,year){
+    constructor (itemId,title,year,type){
         this.itemId = itemId;
         this.title = title;
         this.year = year;
         this.loaned = "no";
         this.reserved = "no";
         this.status = "available";
+        this.type = type;
+        this.setMaxLoan(type);
+
+    }
+
+    setMaxLoan(type){
+        if(type == "book"){
+            this.MAX_LOAN = 4;
+        }
+        else {
+            if (type == 'magazine') {
+                this.MAX_LOAN = 2;
+            }
+            else {
+                this.MAX_LOAN = 1;
+            }
+        }
     }
 
     getStatus(){
@@ -49,6 +66,10 @@ class item{
 
     isReserved(){
         return this.reserved;
+    }
+
+    getMaxLoan (){
+        return this.MAX_LOAN;
     }
 
 }
