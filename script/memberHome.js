@@ -33,16 +33,17 @@ function fillPage(currentUser) {
 
     fillBorrowed(currentUser);
     fillItems();
+    fillPersonalInfo(currentUser);
 }
 
 function fillBorrowed(currentUser){
-    let htmlTemplate = $('#borrowed-item-template').html(),
+    let htmlTemplate = $('#item-template').html(),
     itemsTemplate = Handlebars.compile(htmlTemplate);
 
-    getBorrowedItems(currentUser.username).then(bItems => {
-        console.log('burrowed items: ' + JSON.stringify(bItems));
+    getBorrowedItems(currentUser.username).then(items => {
+        console.log('burrowed items: ' + JSON.stringify(items));
         console.log('Items template: ' + itemsTemplate);
-        $('#borrowed-Table-Body').html(itemsTemplate({bItems}));
+        $('#borrowed-Table-Body').html(itemsTemplate({items}));
     });
 }
 
@@ -52,9 +53,16 @@ function fillItems (){
         itemsTemplate = Handlebars.compile(htmlTemplate);
 
     getAllItems().then(items => {
-        console.log('All items: ' + JSON.stringify(items));
-        console.log('Items template: ' + itemsTemplate);
         $('#items-Table-Body').html(itemsTemplate({items}));
     });
+}
+
+function fillPersonalInfo(currentUser){
+    let htmlTemplate = $('#personal-info-template').html(),
+        infoTemplate = Handlebars.compile(htmlTemplate);
+    console.log("Personal Info: infoTemplate "+infoTemplate({currentUser}));
+    console.log("Personal Info: currentUser "+currentUser);
+    $('#presonal-info-body').html(infoTemplate({currentUser}));
+
 }
 

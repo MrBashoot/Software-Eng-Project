@@ -32,17 +32,20 @@ class userController {
         let username = req.params.username;
         let items = new Array();
         this.userRepository.getUserByUsername(username).then(user =>{
+            console.log(user.borrowed.length);
         if(user.borrowed.length > 0){
             for (var i =0; i<user.borrowed.length; i++){
                 this.itemRepository.getItem(user.borrowed[i].itemId).then(item => {
-                    console.log(item);
                     items.push(item);
-                }).then( (Nothing) => {
-                    console.log('getUserItems: Success');
                     console.log(items);
-                    res.json(items);
+                    if(items.length == user.borrowed.length ){ // this if statement was placed to prevent the response from being sent before the loop exits
+                        console.log(items.length);
+                        console.log('getUserItems: Success');
+                        res.json(items);
+                    }
                 });
             }
+
 
         }
         else{

@@ -9,6 +9,7 @@
     "password": "password",
     "noOfBorrowed": "2",
     "noOfReserved": "1",
+    "balance": "300",
     "borrowed": [
       {
         "itemId": "1"

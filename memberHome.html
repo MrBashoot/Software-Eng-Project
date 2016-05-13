@@ -31,17 +31,29 @@
 </script>
 
 
-<script id="borrowed-item-template" type="text/x-handlebars-template">
-    {{#each items}}
+
+
+<script id="personal-info-template" type="text/x-handlebars-template">
     <tr>
-        <td><input type="checkbox" id={{itemId}}></td>
-        <td>{{type}}</td>
-        <td>{{title}}</td>
-        <td>{{year}}</td>
-        <td>{{isReserved}}</td>
-        <td>{{isLoaned}}</td>
+        <td>First Name:</td>
+        <td>{{firstName}}</td>
     </tr>
-    {{/each}}
+    <tr>
+        <td>Last Name:</td>
+        <td>{{lastName}}</td>
+    </tr>
+    <tr>
+        <td>Balance: </td>
+        <td>{{balance}}</td>
+    </tr>
+    <tr>
+        <td>Borrowed Items:</td>
+        <td>{{noOfBorrowed}}</td>
+    </tr>
+    <tr>
+        <td>Reserved Items:</td>
+        <td>{{noOfReserved}}</td>
+    </tr>
 </script>
 
 
@@ -66,7 +78,23 @@
 
             <!-- Tab panes -->
             <div class="tab-content">
-                <div role="tabpanel" class="tab-pane active" id="home">Welcome to our library system, you can navigate the system from the tabs above</div>
+                <div role="tabpanel" class="tab-pane active" id="home">
+
+                    <div>
+                        <p>Welcome to our library system, you can navigate the system from the tabs above</p>
+                        <br>
+                        <br>
+                    </div>
+
+                    <div>
+                        <p>Personal Information:</p>
+                        <table id="personalInfo-Table"  class="table table-hover table-striped ">
+                            <tbody id="presonal-info-body" class="optOutCenter"></tbody>
+                        </table>
+                    </div>
+
+
+                </div>
                 <div role="tabpanel" class="tab-pane" id="borrow">
                     <!-- start of borrow tab -------------------------------------------------------------------------------------------------------s-->
 
@@ -86,8 +114,7 @@
                             </thead>
                             </thead>
 
-                            <tbody id="items-Table-Body" class="optOutCenter">
-                            </tbody>
+                            <tbody id="items-Table-Body" class="optOutCenter"></tbody>
 
                         </table>
 
@@ -114,7 +141,6 @@
                             <th>year</th>
                             <th>Reserved</th>
                             <th>Loaned</th>
-                        <th>hello</th>
                             </thead>
                             </thead>
 
