@@ -7,8 +7,6 @@ let item = require('./Item.js');
 
 class loanedItem extends item {
 
-var borrowDate,dueDate,fine;
-
     constructor(itemId,title,year,type){
         super(itemId,title,year,type);
         this.setDates(super.getMaxLoan());
@@ -22,7 +20,7 @@ var borrowDate,dueDate,fine;
     setDueDate(MAX_Loan){
         let addedDays = MAX_Loan *7;
         var date = new Date();
-        date.setDate(date.getDate() + addedDays);//today date plus 1
+        date.setDate(date.getDate() + addedDays);//today date plus addedDays
         this.dueDate = this.dateFormater(date);
     }
 
@@ -43,6 +41,14 @@ var borrowDate,dueDate,fine;
     return [day, month, year].join('/');
     }
 
+    getDueDate(){
+        return this.dueDate;
+    }
+
+    getBorrowDate(){
+        return this.borrowDate;
+    }
+
     calculateFine(returnDate){
         //Lacking Details In Use Case Specification
         //if the return date is after the due date the fine is calculated accordingly
@@ -51,4 +57,4 @@ var borrowDate,dueDate,fine;
 
 
 }
-module.exports = new loanedItem();
+module.exports =loanedItem;

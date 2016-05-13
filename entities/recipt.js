@@ -28,4 +28,4 @@ class Recipt {
         return this.toString();
     }
 }
-module .exports = new Recipt();
+module .exports = Recipt;
