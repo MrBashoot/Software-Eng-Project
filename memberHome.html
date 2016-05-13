@@ -36,23 +36,23 @@
 <script id="personal-info-template" type="text/x-handlebars-template">
     <tr>
         <td>First Name:</td>
-        <td>{{firstName}}</td>
+        <td>{{currentUser.firstName}}</td>
     </tr>
     <tr>
         <td>Last Name:</td>
-        <td>{{lastName}}</td>
+        <td>{{currentUser.lastName}}</td>
     </tr>
     <tr>
         <td>Balance: </td>
-        <td>{{balance}}</td>
+        <td>{{currentUser.balance}}</td>
     </tr>
     <tr>
         <td>Borrowed Items:</td>
-        <td>{{noOfBorrowed}}</td>
+        <td>{{currentUser.noOfBorrowed}}</td>
     </tr>
     <tr>
         <td>Reserved Items:</td>
-        <td>{{noOfReserved}}</td>
+        <td>{{currentUser.noOfReserved}}</td>
     </tr>
 </script>
 
@@ -88,8 +88,8 @@
 
                     <div>
                         <p>Personal Information:</p>
-                        <table id="personalInfo-Table"  class="table table-hover table-striped ">
-                            <tbody id="presonal-info-body" class="optOutCenter"></tbody>
+                        <table id="personalInfo-Table"  class="table table-hover table-striped">
+                            <tbody id="personal-info-body" class="optOutCenter"></tbody>
                         </table>
                     </div>
 

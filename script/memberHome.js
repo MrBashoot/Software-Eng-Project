@@ -60,9 +60,9 @@ function fillItems (){
 function fillPersonalInfo(currentUser){
     let htmlTemplate = $('#personal-info-template').html(),
         infoTemplate = Handlebars.compile(htmlTemplate);
-    console.log("Personal Info: infoTemplate "+infoTemplate({currentUser}));
     console.log("Personal Info: currentUser "+currentUser);
-    $('#presonal-info-body').html(infoTemplate({currentUser}));
+    console.log(JSON.stringify(currentUser));
+    $('#personal-info-body').html(infoTemplate({currentUser}));
 
 }
 

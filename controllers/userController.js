@@ -32,17 +32,16 @@ class userController {
         let username = req.params.username;
         let items = new Array();
         this.userRepository.getUserByUsername(username).then(user =>{
-            console.log(user.borrowed.length);
         if(user.borrowed.length > 0){
             for (var i =0; i<user.borrowed.length; i++){
                 this.itemRepository.getItem(user.borrowed[i].itemId).then(item => {
                     items.push(item);
-                    console.log(items);
                     if(items.length == user.borrowed.length ){ // this if statement was placed to prevent the response from being sent before the loop exits
-                        console.log(items.length);
                         console.log('getUserItems: Success');
                         res.json(items);
                     }
+
+
                 });
             }
 
@@ -81,15 +80,8 @@ class userController {
                         userInformation.goTo = '/adminHome.html';
                     }
                     else{
-
-                        if(user.hasOwnProperty('staffId')){
-                            console.log('Login: Success(Member)');
-                        }
-
-                        else {
-                            console.log('Login: Success(Member)');
-                            userInformation.goTo = '/memberHome.html';
-                        }
+                        console.log('Login: Success(Member)');
+                        userInformation.goTo = '/memberHome.html';
                     }
             }
             else{
