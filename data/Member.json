@@ -1,0 +1,61 @@
+[
+  {
+    "memberId": 12,
+    "firstName": "Babikr",
+    "lastName": "Elnimah",
+    "mobile": "7777-888",
+    "email": "babz@test.com",
+    "username": "babz",
+    "password": "password",
+    "noOfBorrowed": "2",
+    "noOfReserved": "1",
+    "borrowed": [
+      {
+        "itemId": "1"
+      },
+      {
+        "itemId": "2"
+      }
+    ]
+  },
+  {
+    "staffId": 34,
+    "firstName": "Youssef",
+    "lastName": "Attata",
+    "mobile": "9999-888",
+    "email": "joe@test.com",
+    "username": "joe",
+    "password": "password",
+    "noOfBorrowed": "2",
+    "noOfReserved": "1",
+    "balance": "300",
+    "borrowed": [
+      {
+        "itemId": 3
+      },
+      {
+        "itemId": 4
+      }
+    ]
+  },
+  {
+    "memberId": 56,
+    "firstName": "Samira",
+    "lastName": "Saghir",
+    "mobile": "9999-888",
+    "email": "samira@test.com",
+    "username": "samira",
+    "password": "password",
+    "noOfBorrowed": "2",
+    "noOfReserved": "1",
+    "balance": "300",
+    "borrowed": [
+      {
+        "itemId": 5
+      },
+      {
+        "itemId": 6
+      }
+    ]
+  }
+]

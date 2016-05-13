@@ -1,0 +1,24 @@
+[
+  {
+    "itemId": "1",
+    "type": "Book",
+    "title": "The Hello And The World",
+    "year": "1994",
+    "callNo": "17",
+    "Max_Loan": "3",
+    "status": "Reserved",
+    "isLoaned": "No",
+    "isReserved": "yes"
+  },
+  {
+    "itemId": "2",
+    "type": "Book",
+    "title": "The Hello And The World",
+    "year": "1994",
+    "callNo": "17",
+    "Max_Loan": "3",
+    "status": "Reserved",
+    "isLoaned": "No",
+    "isReserved": "yes"
+  }
+]

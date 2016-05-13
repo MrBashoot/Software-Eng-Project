@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Member Home</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/style-Home.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.5/css/bootstrap-dialog.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.5/js/bootstrap-dialog.min.js"></script>
+    <script src="script/memberHome.js"></script>
+</head>
+
+<body>
+
+<script id="item-template" type="text/x-handlebars-template">
+    {{#each items}}
+    <tr>
+        <td><input type="checkbox" id={{itemId}}></td>
+        <td>{{type}}</td>
+        <td>{{title}}</td>
+        <td>{{year}}</td>
+        <td>{{isReserved}}</td>
+        <td>{{isLoaned}}</td>
+    </tr>
+    {{/each}}
+</script>
+
+
+<script id="borrowed-item-template" type="text/x-handlebars-template">
+    {{#each items}}
+    <tr>
+        <td><input type="checkbox" id={{itemId}}></td>
+        <td>{{type}}</td>
+        <td>{{title}}</td>
+        <td>{{year}}</td>
+        <td>{{isReserved}}</td>
+        <td>{{isLoaned}}</td>
+    </tr>
+    {{/each}}
+</script>
+
+
+
+
+<header class="container-fluid">
+    <p id="pLoginType"></p>
+    <p id="loggedInAs" class="alignRight"></p>
+</header>
+
+<br><br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-s-8">
+            <!-- Nav tabs --><div class="card">
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="home"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+                <li role="presentation"><a href="#borrow" aria-controls="borrow" role="tab" data-toggle="tab">Borrow Item</a></li>
+                <li role="presentation"><a href="#return" aria-controls="return" role="tab" data-toggle="tab">Return Item</a></li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="home">Welcome to our library system, you can navigate the system from the tabs above</div>
+                <div role="tabpanel" class="tab-pane" id="borrow">
+                    <!-- start of borrow tab -------------------------------------------------------------------------------------------------------s-->
+
+                    <div class="optOutCenter">
+                        <h5 class="optOutCenter">Items: </h5>
+                    </div>
+                    <div>
+                        <table id="Items-Table" class="table table-hover table-striped ">
+                            <thead>
+                            <thead>
+                            <th>Selection</th>
+                            <th>Type</th>
+                            <th>Title</th>
+                            <th>year</th>
+                            <th>Reserved</th>
+                            <th>Loaned</th>
+                            </thead>
+                            </thead>
+
+                            <tbody id="items-Table-Body" class="optOutCenter">
+                            </tbody>
+
+                        </table>
+
+                        <div class="col-xs-9 optOutCenter">
+                            <button id="btnBorrow" class="btn btn-success">Borrow Selection</button>
+                        </div>
+                    </div>
+
+                    <!-- end of the borrow tab -----------------------------------------------------------------------------------------------------E-->
+                </div>
+                <div role="tabpanel" class="tab-pane" id="return">
+                    <!-- start of return tab -------------------------------------------------------------------------------------------------------s-->
+
+                    <div class="optOutCenter">
+                        <h5 class="optOutCenter">Items: </h5>
+                    </div>
+                    <div>
+                        <table id="borrowed-Table" class="table table-hover table-striped ">
+                            <thead>
+                            <thead>
+                            <th>Selection</th>
+                            <th>Type</th>
+                            <th>Title</th>
+                            <th>year</th>
+                            <th>Reserved</th>
+                            <th>Loaned</th>
+                        <th>hello</th>
+                            </thead>
+                            </thead>
+
+                            <tbody id="borrowed-Table-Body" class="optOutCenter">
+                            </tbody>
+                        </table>
+
+                        <div class="col-xs-9 optOutCenter">
+                            <button id="btnReturn" class="btn btn-danger">Return Selection</button>
+                        </div>
+                    </div>
+
+
+                    <!-- end of return tab ---------------------------------------------------------------------------------------------------------E-->
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+<footer class="container-fluid alignRight">
+    <p id="p2" style="margin-bottom: 5px">
+        contact information:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        Ahmed Ibrahim(<a href="mailto:ai1204361@qu.edu.qa" target="_top">ai1204361@qu.edu.qa</a>)&nbsp;&nbsp;&nbsp;
+        <br>
+        Babiker Elnimah(<a href="mailto:be1204005@qu.edu.qa" target="_top">be1204005@qu.edu.qa</a>)
+        <br>
+        Youssef Atatta(<a href="mailto:be1204005@qu.edu.qa" target="_top">ya1300829@qu.edu.qa</a>)&nbsp;&nbsp;&nbsp;&nbsp;
+    </p>
+</footer>
+
+</body>
+</html>

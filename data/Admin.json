@@ -1,0 +1,11 @@
+[
+  {
+    "staffId": 500,
+    "username": "Admin",
+    "firstName": "Ahmed",
+    "lastName": "Ibrahim",
+    "email": "coordinator@halaqa.org",
+    "password": "password",
+    "isCoordinator": 1
+  }
+]
