@@ -4,7 +4,7 @@
 "use strict";
 class item{
     constructor (itemId,title,year,type, item) {
-        if (!item) {
+        if (!item) { // this if statement is put there to check if the caller wants to initiate the values from an object that came from a json file;
             this.itemId = itemId;
             this.title = title;
             this.year = year;
