@@ -1,6 +1,7 @@
 /**
  * Created by Ahmed on 5/13/2016.
  */
+    "use strict";
 class Member{
     
     constructor(firstName,lastName,mobile,email,username,password , member)

@@ -1,6 +1,7 @@
 /**
  * Created by Ahmed on 5/13/2016.
  */
+    "use strict";
 let member = require("./member.js");
 
 class Student extends member{

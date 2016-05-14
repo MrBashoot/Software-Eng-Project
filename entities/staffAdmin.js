@@ -1,6 +1,7 @@
 /**
  * Created by Ahmed on 5/13/2016.
  */
+    "use strict";
     let staff = require ('./staff.js');
 class staffAdmin extends staff{
 
@@ -28,7 +29,9 @@ class staffAdmin extends staff{
 
     }
 
-    resetReport
+    resetReport(){
+
+    }
 
 }
 module .exports =  staffAdmin;

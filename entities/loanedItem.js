@@ -12,9 +12,12 @@ class LoanedItem extends item {
         {
             super(itemId, title, year, type);
             this.setDates(super.getMaxLoan());
+            super.loanItem();
+
         }
         else{
             super(loanedItem.itemId, loanedItem.title , loanedItem.year ,loanedItem.type);
+            super.loanItem();
             this.dueDate = loanedItem.dueDate;
             this.borrowDate = loanedItem.borrowDate;
         }
