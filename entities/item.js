@@ -2,7 +2,7 @@
  * Created by Ahmed on 5/13/2016.
  */
 "use strict";
-class item{
+class Item{
     constructor (itemId,title,year,type,item) {
         if (!item) { // this if statement is put there to check if the caller wants to initiate the values from an object that came from a json file;
             this.itemId = itemId;
@@ -82,4 +82,4 @@ class item{
     }
 
 }
-module.exports = item;
+module.exports = Item;

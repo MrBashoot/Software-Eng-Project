@@ -5,7 +5,7 @@
 
 let item = require('./Item.js');
 
-class loanedItem extends item {
+class LoanedItem extends item {
 
     constructor(itemId,title,year,type,loanedItem){
         if(!loanedItem) 
@@ -65,4 +65,4 @@ class loanedItem extends item {
 
 
 }
-module.exports =loanedItem;
+module.exports =LoanedItem;

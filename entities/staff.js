@@ -4,7 +4,7 @@
     
 let member = require("./member.js");
 
-class staff extends member {
+class Staff extends member {
     
     constructor(firstName,lastName,mobile,email,username,password,staffId,staff)
     {
@@ -25,7 +25,7 @@ class staff extends member {
     }
     
 }
-module.exports = staff;
+module.exports = Staff;
 
 // staff
 

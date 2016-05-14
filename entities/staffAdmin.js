@@ -31,4 +31,4 @@ class staffAdmin extends staff{
     resetReport
 
 }
-module .exports = new staffAdmin();
+module .exports =  staffAdmin;
