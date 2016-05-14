@@ -2,9 +2,7 @@
  * Created by Ahmed on 5/13/2016.
  */
 class Member{
-
-    var firstName,lastName,mobile,email,username,password,noOfBorrowed,balance, borrowed, reserved;
-
+    
     constructor(firstName,lastName,mobile,email,username,password)
     {
         this.firstName = firstName;
@@ -69,3 +67,5 @@ class Member{
         this.balance += amount;
     }
 }
+
+module.exports = Member;
