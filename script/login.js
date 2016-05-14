@@ -20,9 +20,6 @@ function login(event){
 
     let url = 'http://localhost:9090/api/users/login';
 
-    console.log('user entered: ' + loginID + " " + loginPassword );
-    console.log('user created ' + user.username + ' ' + user.password);
-
     fetch(url, {
         method: "post",
         headers: {
@@ -31,7 +28,8 @@ function login(event){
         body: JSON.stringify(user)
     }).then(res => res.json()).then(user => {
         if(user.isIn) {
-            console.log(user.goTo + '?username=' + user.username);
+            console.log("going to" + user.goTo + '?username=' + user.username);
+            console.log("user: " + user.password);
             localStorage.user = JSON.stringify(user);
             window.location = user.goTo + '?username=' + user.username;
         }

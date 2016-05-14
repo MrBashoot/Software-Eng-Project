@@ -48,8 +48,7 @@ class itemRepository {
 
     addItemTest(items) { //Incomplete
         return new Promise((resolve, reject) => {
-            for(item of items)
-            return this.writeJsonFile('../data/itemTest.json', item)
+            return this.writeJsonFile('../data/Item.json', items);
             resolve(items);
         });
     }

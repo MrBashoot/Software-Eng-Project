@@ -37,7 +37,7 @@ function fillPage(currentUser) {
 }
 
 function fillBorrowed(currentUser){
-    let htmlTemplate = $('#item-template').html(),
+    let htmlTemplate = $('#borrowed-item-template').html(),
     itemsTemplate = Handlebars.compile(htmlTemplate);
 
     getBorrowedItems(currentUser.username).then(items => {

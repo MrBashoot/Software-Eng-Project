@@ -17,6 +17,20 @@
 
 <body>
 
+<script id="borrowed-item-template" type="text/x-handlebars-template">
+    {{#each items}}
+    <tr>
+        <td><input type="checkbox" id={{itemId}}></td>
+        <td>{{type}}</td>
+        <td>{{title}}</td>
+        <td>{{year}}</td>
+        <td>{{borrowDate}}</td>
+        <td>{{dueDate}}</td>
+    </tr>
+    {{/each}}
+</script>
+
+
 <script id="item-template" type="text/x-handlebars-template">
     {{#each items}}
     <tr>
@@ -24,11 +38,11 @@
         <td>{{type}}</td>
         <td>{{title}}</td>
         <td>{{year}}</td>
-        <td>{{isReserved}}</td>
-        <td>{{isLoaned}}</td>
+        <td>{{status}}</td>
     </tr>
     {{/each}}
 </script>
+
 
 
 
@@ -109,8 +123,7 @@
                             <th>Type</th>
                             <th>Title</th>
                             <th>year</th>
-                            <th>Reserved</th>
-                            <th>Loaned</th>
+                            <th>Status</th>
                             </thead>
                             </thead>
 
@@ -139,8 +152,8 @@
                             <th>Type</th>
                             <th>Title</th>
                             <th>year</th>
-                            <th>Reserved</th>
-                            <th>Loaned</th>
+                            <th>Borrow Date</th>
+                            <th>Due Date</th>
                             </thead>
                             </thead>
 
@@ -162,15 +175,15 @@
     </div>
 </div>
 
-<footer class="container-fluid alignRight">
-    <p id="p2" style="margin-bottom: 5px">
-        contact information:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        Ahmed Ibrahim(<a href="mailto:ai1204361@qu.edu.qa" target="_top">ai1204361@qu.edu.qa</a>)&nbsp;&nbsp;&nbsp;
-        <br>
-        Babiker Elnimah(<a href="mailto:be1204005@qu.edu.qa" target="_top">be1204005@qu.edu.qa</a>)
-        <br>
-        Youssef Atatta(<a href="mailto:be1204005@qu.edu.qa" target="_top">ya1300829@qu.edu.qa</a>)&nbsp;&nbsp;&nbsp;&nbsp;
+<footer class="container-fluid alignLeft">
+    <table>
+        <td colspan="4"><tr><p><p>Contact Information:</p></tr></td>
+        <tr><td><p>Ahmed Ibrahim(<a href="mailto:ai1204361@qu.edu.qa" target="_top">ai1204361@qu.edu.qa</a>)</p></td></tr>
+        <tr><td><p>Babiker Elnimah(<a href="mailto:be1204005@qu.edu.qa" target="_top">be1204005@qu.edu.qa</a>)</p></td></tr>
+        <tr><td><p>Mohammed Eldeeb(<a href="mailto:me1204026@qu.edu.qa" target="_top">me1204026@qu.edu.qa</a>)</p></td></tr>
+        <tr><td><p>Youssef Atatta(<a href="mailto:be1204005@qu.edu.qa" target="_top">ya1300829@qu.edu.qa</a>)</p></td></tr>
     </p>
+    </table>
 </footer>
 
 </body>

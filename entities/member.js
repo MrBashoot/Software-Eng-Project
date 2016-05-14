@@ -13,8 +13,9 @@ class Member{
             this.email = email;
             this.username = username;
             this.password = password;
-            this.noOfBorrowed = 0;
-            this.balance = 500;
+            this.noOfBorrowed = "0";
+            this.noOfReserved = "0";
+            this.balance = "500";
             this.borrowed = [];
             this.reserved = [];
         }
@@ -46,6 +47,7 @@ class Member{
     addItem(id)
     {
         this.borrowed.push(id);
+        this.noOfBorrowed++;
     }
     removeItem(id)
     {
@@ -53,15 +55,17 @@ class Member{
         if (index > -1) {
             this.borrowed.splice(index, 1);
         }
+        this.noOfBorrowed--;
     }
     reserveItem(id)
     {
         this.reserved.push(id);
+        this.noOfReserved++;
     }
     
     getNumOfReserved()
     {
-        return this.reserved.length;
+        return this.noOfReserved;
     }
     isMaxBorrowd()
     {

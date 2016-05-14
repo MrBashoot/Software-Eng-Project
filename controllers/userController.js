@@ -22,7 +22,8 @@ class userController {
         console.log('getUser:(' + req.params.username + ')Attempt');
         let username = req.params.username;
         this.userRepository.getUserByUsername(username).then(user =>{
-            console.log('getUser: Success')
+            console.log('getUser: Success');
+            delete user.password;
             res.json(user);
         }).catch(err => res.status(404).send(err));
     }
@@ -34,7 +35,7 @@ class userController {
         this.userRepository.getUserByUsername(username).then(user =>{
         if(user.borrowed.length > 0){
             for (var i =0; i<user.borrowed.length; i++){
-                this.itemRepository.getItem(user.borrowed[i].itemId).then(item => {
+                this.itemRepository.getItem(user.borrowed[i]).then(item => {
                     items.push(item);
                     if(items.length == user.borrowed.length ){ // this if statement was placed to prevent the response from being sent before the loop exits
                         console.log('getUserItems: Success');
@@ -91,6 +92,7 @@ class userController {
                     allert : 'Invalid password'
                 };
             }
+            delete userInformation.password;
             res.json(userInformation);
         }).catch(err => {
             console.log("Login: Invalid username")

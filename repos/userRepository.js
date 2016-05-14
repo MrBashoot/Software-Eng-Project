@@ -46,10 +46,9 @@ class userRepository {
         });
     }
 
-    addMember(members) {
+    addMemberTest(members) {
         return new Promise((resolve, reject) => {
-            for(member of members)
-                return this.writeJsonFile('../data/Member.json', member)
+                return this.writeJsonFile('../data/Member.json', members)
             resolve(members);
         });
     }
