@@ -46,10 +46,11 @@ class itemRepository {
         });
     }
 
-    addItemTest(item) { //Incomplete
+    addItemTest(items) { //Incomplete
         return new Promise((resolve, reject) => {
+            for(item of items)
             return this.writeJsonFile('../data/itemTest.json', item)
-            resolve(item);
+            resolve(items);
         });
     }
 
