@@ -46,6 +46,13 @@ class userRepository {
         });
     }
 
+    addMember(member) {
+        return new Promise((resolve, reject) => {
+            return this.writeJsonFile('../data/Member.json', member)
+            resolve(member);
+        });
+    }
+    
     getAdmins(){
         return new Promise ((resolve,reject) =>{
             this.readJsonFile('./data/Admin.json').then(Admins => {
