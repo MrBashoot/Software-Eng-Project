@@ -1,13 +1,20 @@
 /**
- * Created by boody on 13/05/2016.
+ * Created by Ahmed on 5/13/2016.
  */
-"use strict"
+    "use strict"
+let item = require("./Item.js");
+var item1 = new item("1","12","12","12");
 
- let cat = require("./Cat.js");
+let itemRepo = require('../repos/itemRepository.js');
 
- let me = new cat("mewww","mekfe");
+let loanedItem = require("./loanedItem.js");
+let item2 = new loanedItem(1,1,1,1);
 
-  me.speak();
-    
 
+itemRepo.addItemTest(item2);
+itemRepo.getItemTest().then(item3 => {
+    let item4 = new item(2,2,2,"book");
+    console.log(item4.getMaxLoan());
+});
+console.log("borrowDate: " + item2.getBorrowDate());
 

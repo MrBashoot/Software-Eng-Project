@@ -3,23 +3,32 @@
  */
 "use strict";
 class item{
+    constructor (itemId,title,year,type, item) {
+        if (!item) {
+            this.itemId = itemId;
+            this.title = title;
+            this.year = year;
+            this.loaned = "no";
+            this.reserved = "no";
+            this.status = "available";
+            this.type = type;
+            this.setMaxLoan(type);
+        }
 
-    var itemId,title,year,loaned,reserved,status,type,MAX_LOAN;
-
-    constructor (itemId,title,year,type){
-        this.itemId = itemId;
-        this.title = title;
-        this.year = year;
-        this.loaned = "no";
-        this.reserved = "no";
-        this.status = "available";
-        this.type = type;
-        this.setMaxLoan(type);
-
+        else {
+            this.itemId = item.itemId;
+            this.title = item.title;
+            this.year = item.year;
+            this.loaned = "no";
+            this.reserved = "no";
+            this.status = "available";
+            this.type = item.type;
+            this.setMaxLoan(this.type);
+        }
     }
 
     setMaxLoan(type){
-        if(type == "book"){
+        if(type === "book"){
             this.MAX_LOAN = 4;
         }
         else {
@@ -73,4 +82,4 @@ class item{
     }
 
 }
-module.exports = new item();
+module.exports = item;

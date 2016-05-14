@@ -46,6 +46,24 @@ class itemRepository {
         });
     }
 
+    addItemTest(item) { //Incomplete
+        return new Promise((resolve, reject) => {
+            return this.writeJsonFile('../data/itemTest.json', item)
+            resolve(item);
+        });
+    }
+
+    getItemTest(){
+        return new Promise ((resolve,reject) =>{
+            this.readJsonFile('../data/itemTest.json').then(Items => {
+                resolve(Items);
+            }).catch(err => {
+                reject(err);
+            });
+        });
+    }
+
+
     writeJsonFile(filePath, data) {
         return new Promise((resolve, reject) => {
             this.fs.writeFile(filePath, JSON.stringify(data), error => {
