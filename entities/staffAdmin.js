@@ -4,15 +4,13 @@
     let staff = require ('./staff.js');
 class staffAdmin extends staff{
 
-    var isCoordinator;
 
-    constuctor (){
-        //add supper class constructor call
+    constructor (firstName,lastName,mobile,email,username,password,staffId){
+        super(firstName,lastName,mobile,email,username,password,staffId);
         this.isCoordinator = 1;
     }
 
     editApplication (application){
-
     }
 
     getApplicationApproval (){
