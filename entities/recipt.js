@@ -3,11 +3,9 @@
  */
 "use strict";
 class Recipt {
-
-    var date,amount,details;
-
+    
     constructor(amount,details){
-        this.date = this.dateFormater (new Date());
+        this.date = this.dateFormater(new Date());
         this.amount = amount;
         this.details = details;
     }
