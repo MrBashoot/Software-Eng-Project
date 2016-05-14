@@ -1,8 +1,9 @@
 /**
  * Created by Ahmed on 5/13/2016.
  */
+let member = require("./member.js");
 
-class Student{
+class Student extends member{
 
     constructor(firstName,lastName,mobile,email,username,password,memeberId)
     {

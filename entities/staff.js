@@ -1,7 +1,10 @@
 /**
  * Created by Ahmed on 5/13/2016.
  */
-class staff{
+    
+    let member = require("./member.js");
+
+class staff extends member {
     
     constructor(firstName,lastName,mobile,email,username,password,staffId)
     {
