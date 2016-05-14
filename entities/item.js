@@ -19,11 +19,11 @@ class item{
             this.itemId = item.itemId;
             this.title = item.title;
             this.year = item.year;
-            this.loaned = "no";
-            this.reserved = "no";
-            this.status = "available";
+            this.loaned = item.loaned;
+            this.reserved = item.reserved;
+            this.status = item.status;
             this.type = item.type;
-            this.setMaxLoan(this.type);
+            this.MAX_LOAN = item.MAX_LOAN;
         }
     }
 

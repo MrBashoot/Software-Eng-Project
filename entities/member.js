@@ -3,18 +3,33 @@
  */
 class Member{
     
-    constructor(firstName,lastName,mobile,email,username,password)
+    constructor(firstName,lastName,mobile,email,username,password , member)
     {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.mobile = mobile;
-        this.email = email;
-        this.username = username;
-        this.password = password;
-        this.noOfBorrowed=0;
-        this.balance= 500;
-        this.borrowed = [];
-        this.reserved=[];
+        if(!member) {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.mobile = mobile;
+            this.email = email;
+            this.username = username;
+            this.password = password;
+            this.noOfBorrowed = 0;
+            this.balance = 500;
+            this.borrowed = [];
+            this.reserved = [];
+        }
+        else
+        {
+            this.firstName = member.firstName;
+            this.lastName = member.lastName;
+            this.mobile = member.mobile;
+            this.email = member.email;
+            this.username = member.username;
+            this.password = member.password;
+            this.noOfBorrowed = member.noOfBorrowed;
+            this.balance = member.balance;
+            this.borrowed = member.borrowed;
+            this.reserved = member.reserved;
+        }
     }
     deduct(fine)
     {

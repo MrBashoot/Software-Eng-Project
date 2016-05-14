@@ -7,9 +7,17 @@ let item = require('./Item.js');
 
 class loanedItem extends item {
 
-    constructor(itemId,title,year,type){
-        super(itemId,title,year,type);
-        this.setDates(super.getMaxLoan());
+    constructor(itemId,title,year,type,loanedItem){
+        if(!loanedItem) 
+        {
+            super(itemId, title, year, type);
+            this.setDates(super.getMaxLoan());
+        }
+        else{
+            super(loanedItem.itemId, loanedItem.title , loanedItem.year ,loanedItem.type);
+            this.dueDate = loanedItem.dueDate;
+            this.borrowDate = loanedItem.borrowDate;
+        }
     }
 
     setDates (MAX_LOAN){

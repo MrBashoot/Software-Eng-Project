@@ -4,10 +4,17 @@
 "use strict";
 class Recipt {
     
-    constructor(amount,details){
-        this.date = this.dateFormater(new Date());
-        this.amount = amount;
-        this.details = details;
+    constructor(amount,details,recipt){
+        if(!recipt) {
+            this.date = this.dateFormater(new Date());
+            this.amount = amount;
+            this.details = details;
+        }
+        else {
+            this.date = recipt.date;
+            this.amount = recipt.amount;
+            this.details = recipt.details;
+        }
     }
 
     dateFormater(date) {
