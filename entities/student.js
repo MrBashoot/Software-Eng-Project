@@ -6,14 +6,14 @@ let member = require("./member.js");
 
 class Student extends member{
 
-    constructor(firstName,lastName,mobile,email,username,password,memeberId ,student)
+    constructor(id,firstName,lastName,mobile,email,username,password,memeberId ,student)
     {
         if(!student) {
-            super(firstName, lastName, mobile, email, username, password)
+            super(id,firstName, lastName, mobile, email, username, password)
             this.memberId = memeberId;
         }
         else {
-            super(student.firstName, student.lastName, student.mobile, student.email, student.username, student.password)
+            super(student.id,student.firstName, student.lastName, student.mobile, student.email, student.username, student.password,student);
             this.memberId = student.memberId
         }
     }
@@ -21,6 +21,15 @@ class Student extends member{
     getStudentId()
     {
         return this.memberId;
+    }
+
+    borrowItem(itemId){
+        super.addItem(itemId)
+    }
+
+    returnItem(id)
+    {
+        super.removeItem(id);
     }
 }
 

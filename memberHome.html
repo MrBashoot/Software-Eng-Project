@@ -19,8 +19,8 @@
 
 <script id="borrowed-item-template" type="text/x-handlebars-template">
     {{#each items}}
-    <tr>
-        <td><input type="checkbox" id={{itemId}}></td>
+    <tr onclick="onSelected();">
+        <td><input type="checkbox" id=borrowSelectId value="{{itemId}}"></td>
         <td>{{type}}</td>
         <td>{{title}}</td>
         <td>{{year}}</td>
@@ -34,7 +34,7 @@
 <script id="item-template" type="text/x-handlebars-template">
     {{#each items}}
     <tr>
-        <td><input type="checkbox" id={{itemId}}></td>
+        <td><input type="checkbox" id={{itemId}} value="{{status}}" onclick="onSelected(this)"></td>
         <td>{{type}}</td>
         <td>{{title}}</td>
         <td>{{year}}</td>

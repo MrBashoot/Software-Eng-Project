@@ -22,6 +22,23 @@ class userRepository {
         });
     }
 
+    modifyUser(user){
+        //console.log("UserRepo: " + JSON.stringify(user));
+        this.getAllUsers().then(users => {
+            //console.log("UserRepo: " + JSON.stringify(users));
+                for(var i=0; i<users.length; i++){
+                    if(users[i].id == user.id){
+                        //console.log(users[i]);
+                        users.splice(i, 1);
+                        users.push(user);
+                        break;
+                    }
+                }
+            //console.log("UserRepo: " + JSON.stringify(users));
+            this.writeJsonFile('./data/Member.json', users);
+        });
+    }
+    
     getUserByUsername(username){
         return new Promise ((resolve, reject) =>{
             this.getAllUsers().then(users =>{
@@ -35,6 +52,21 @@ class userRepository {
             })
         });
     }
+    
+    getUserById(id){
+        return new Promise ((resolve, reject) =>{
+            this.getAllUsers().then(users =>{
+                let user =users.filter(u =>  u.id === id);
+                if (user.length>0){
+                    resolve(user[0]);
+                }
+                else {
+                    reject('id not found');
+                }
+            })
+        });
+    }
+
 
     getMembers(){
         return new Promise ((resolve,reject) =>{
@@ -44,7 +76,9 @@ class userRepository {
                 reject(err);
             });
         });
-    }
+ 
+
+      }
 
     addMemberTest(members) {
         return new Promise((resolve, reject) => {
@@ -91,5 +125,6 @@ class userRepository {
     }
 
 }
+
 
 module.exports = new userRepository();

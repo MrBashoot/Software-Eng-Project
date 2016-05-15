@@ -30,8 +30,8 @@ function generateMembers(Members){
 
 function generateStudents(Members){
     //generates a list of students then adds them to the members list
-    let student1 = new Student("Babiker","Elnimah","66190072","b.elnimah@gmail.com","babz","password","1");
-    let student2 = new Student("Mohammad","Yasser","77874791","cool.mada#yahoo.com","bashoot","password","2");
+    let student1 = new Student("1","Babiker","Elnimah","66190072","b.elnimah@gmail.com","babz","password","1");
+    let student2 = new Student("2","Mohammad","Yasser","77874791","cool.mada#yahoo.com","bashoot","password","2");
     student1.addItem("3");
     student1.reserveItem("1");
     Members.push(student1);
@@ -40,26 +40,25 @@ function generateStudents(Members){
 
 function generateStaff(Members){
     //generates staff list then adds it to the members list
-    let staff1 = new Staff("Yousef","Attata","55967571","youssef.abdo#gmail.com","joe","password","1");
-    let staff2 = new Staff("Ahmed","Ibrhaim","70744774","tntermiante@gmail.com","ahmed","password","2");
-;
+    let staff1 = new Staff("3","Yousef","Attata","55967571","youssef.abdo#gmail.com","joe","password","1");
+
     Members.push(staff1);
-    Members.push(staff2);
+
 }
 
 function generateAdmin(Members){
     //generates a admin then adds it the members list
 
-    let admin = new StaffAdmin("Moutaz","Saleh","*******","m.saleh#gmail.com","admin","password",3);
+    let admin = new StaffAdmin("5","Moutaz","Saleh","*******","m.saleh#gmail.com","admin","password",3);
 
     Members.push(admin);
 }
 
 function generateItems(Items){
     //generates a list of items
-    let item1= new Item("1","Clock","2016","book");
+    let item1= new Item("1","The Hello And The World","2016","book");
     item1.reserveItem();
-    let item2= new Item("2","Watch","2016","book");
+    let item2= new Item("2","The Hello And The World 2","2016","book");
     let item3= new LoanedItem("3","Time News","2016","magazine");
     let item4= new LoanedItem("4","Inception","2016","dvd");
     Items.push(item1);

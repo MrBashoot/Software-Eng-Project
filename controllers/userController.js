@@ -1,12 +1,16 @@
 /**
  * Created by Ahmed on 5/12/2016.
  */
-'use strict'
+'use strict';
 class userController {
 
     constructor() {
         this.userRepository = require('../repos/userRepository');
         this.itemRepository = require('../repos/itemRepository');
+        this.LoanedItem = require ('../entities/loanedItem');
+        this.Student = require ('../entities/student');
+        this.Staff = require ('../entities/staff');
+        this.Item = require ('../entities/item');
     }
 
 
@@ -63,11 +67,6 @@ class userController {
       }).catch(err => res.status(404).send(err));
     }
 
-    getItemById(req,res){
-        this.itemRepository.getItemsById(req.params.itemId).then(item => {
-            res.json(item);
-        }).catch(err =>res.status(404).send(err));
-    }
 
     login(req,res){
         console.log("Login: Attempt")
@@ -102,6 +101,82 @@ class userController {
         });
     }
 
+    borrowItem (req,res) {
+        console.log("Borrow Attempt");
+        let BItem = req.body;
+        let itemsList = new Array();
+
+        this.userRepository.getUserById(BItem.userId).then(User => {
+            this.user = User;
+
+            for (var i = 0; i < BItem.items.length; i++) {
+                this.itemRepository.getItem(BItem.items[i]).then(item => {
+                    let loanedItem = new this.LoanedItem(1,1,1,1,item);
+                  //  console.log(loanedItem);
+                    itemsList.push(loanedItem);
+                }).then(() => {
+                    //console.log('inside then');
+                    if(this.user.hasOwnProperty('memberId')){
+                        this.user = new this.Student(1,1,1,1,1,1,1,1,User);
+                        this.user.borrowItem(itemsList[itemsList.length-1].itemId);
+                    }
+                    else{
+                        this.user = new this.Staff(1,1,1,1,1,1,1,1,User);
+                        this.user.borrowItem(itemsList[itemsList.length-1].itemId);
+                    }
+
+                    //console.log(this.user);
+                }).then(() => {
+                    console.log("Before If");
+                    if (i == BItem.items.length) {
+                    //    console.log("User: " +JSON.stringify(this.user) + "\nItemList: " + JSON.stringify(itemsList));
+                        this.itemRepository.modifyItems(itemsList);
+                        this.userRepository.modifyUser(this.user);
+                        res.status(200).send("All Good");
+                    }
+
+                });
+
+
+
+            }
+
+        });
+    }
+
+
+    returnItem (req,res) {
+        console.log("Return Attempt");
+        let RItem = req.body;
+        let itemsList = new Array();
+
+        this.userRepository.getUserById(RItem.userId).then(User => {
+            this.user = User;
+
+            for (var i = 0; i < RItem.items.length; i++) {
+                this.itemRepository.getItem(RItem.items[i]).then(item => {
+                    let loanedItem = new this.Item(1,1,1,1,item);
+                    itemsList.push(loanedItem);
+                }).then(() => {
+                    if(this.user.hasOwnProperty('memberId')){
+                        this.user = new this.Student(1,1,1,1,1,1,1,1,User);
+                        this.user.returnItem(itemsList[itemsList.length-1].itemId);
+                    }
+                    else{
+                        this.user = new this.Staff(1,1,1,1,1,1,1,1,User);
+                        this.user.returnItem(itemsList[itemsList.length-1].itemId);
+                    }
+                }).then(() => {
+                    if (i == RItem.items.length) {
+                        this.itemRepository.modifyItems(itemsList);
+                        this.userRepository.modifyUser(this.user);
+                        res.status(200).send("All Good");
+                    }
+
+                });
+            }
+        });
+    }
 }
 
 module.exports= new userController()

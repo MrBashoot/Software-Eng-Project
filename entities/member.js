@@ -4,9 +4,10 @@
     "use strict";
 class Member{
     
-    constructor(firstName,lastName,mobile,email,username,password , member)
+    constructor(id,firstName,lastName,mobile,email,username,password , member)
     {
         if(!member) {
+            this.id = id;
             this.firstName = firstName;
             this.lastName = lastName;
             this.mobile = mobile;
@@ -21,6 +22,7 @@ class Member{
         }
         else
         {
+            this.id = member.id;
             this.firstName = member.firstName;
             this.lastName = member.lastName;
             this.mobile = member.mobile;

@@ -20,32 +20,42 @@ app.get('/',(req,res)=>{
 //---------------------------------------------------------------------------------
 
 app.post('/api/users/login', (req, res) => {
-    console.log('Event:(post)=> login attempt');
+    console.log('EVENT:---(post)=> login attempt');
     userController.login(req,res);
 });
 
 //---------------------------------------------------------------------------------
 
 app.get('/api/users', (req,res) =>{
-    console.log('Event:(get)=> getAllUsers');
+    console.log('EVENT:---(get)=> getAllUsers');
     userController.getUsers(req,res);
 });
 
 app.get('/api/users/:username', (req,res)=>{
-    console.log('Event:(get)=> userByUsername(' + req.params.username + ")");
+    console.log('EVENT:---(get)=> userByUsername(' + req.params.username + ")");
     userController.getUser(req,res);
 });
 
 //---------------------------------------------------------------------------------
 
 app.get('/api/items', (req,res) => {
-    console.log('Event:(get)=> all items');
+    console.log('EVENT:---(get)=> all items');
     userController.getAllItems(req,res);
 });
 
 app.get('/api/items/:username', (req,res) =>{ //gets all items that are burrowed by a particular username
-    console.log('Event:(get)=> itemByUsername('+ req.params.username +')');
+    console.log('EVENT:---(get)=> itemByUsername('+ req.params.username +')');
     userController.getUserItems(req,res);
+});
+
+app.put('/api/items/borrow', (req,res) =>{
+   console.log('EVENT:---(put)=> Borrow Item');
+    userController.borrowItem(req,res);
+});
+
+app.put('/api/items/borrow', (req,res) =>{
+    console.log('EVENT:---(put)=> Return Item');
+    userController.returnItem(req,res);
 });
 
 //---------------------------------------------------------------------------------

@@ -1,11 +1,19 @@
 /**
  * Created by Ahmed on 5/13/2016.
  */
+
+let checkList = new Array();
+let returnCheckList = new Array();
+let USER;
 $(document).ready(function(){
+
+    $("#btnBorrow").on('click', onBorrow);
+    $("#btnReturn").on('click', onReturn);
     let user = JSON.parse(localStorage.user);
     console.log(user.username + " is now logged in");
     $('#loggedInAs').html('Welcome ' + user.username);
     getUser(user.username).then(currentUser => {
+        USER = currentUser;
         if (currentUser.hasOwnProperty('staffId'))
         {$('#pLoginType').html('Logged in as staff');}
         else{$('#pLoginType').html('Logged in as member');}
@@ -13,6 +21,77 @@ $(document).ready(function(){
     });
 });
 
+function onReturn(){
+
+}
+
+function onBorrow(){
+    console.log(checkList);
+    console.log(JSON.stringify(USER));
+    let userId = USER.id;
+
+    if(USER.noOfBorrowed >=5){
+        alert("You have exceed your maximum number of borrowed items");
+    }
+
+    else {
+        let BItem = {
+            items: checkList,
+            userId: userId
+        };
+
+        let url = "http://localhost:9090/api/items/borrow";
+        fetch(url, {
+            method: "put",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(BItem)
+        }).then(() =>{
+            fillPage(USER);
+            checkList = new Array();
+        })
+    }
+
+
+}
+
+function onSelected(element){
+    if(element.checked)
+    {
+        if(element.value!= "available")
+        {
+            element.disabled = true;
+            element.checked = false;
+        }
+        else
+        checkList.push(element.id);
+    }
+    else{
+        var index = checkList.indexOf(element.id);
+        if (index > -1) {
+            checkList.splice(index, 1);
+        }
+    }
+
+    console.log(checkList);
+}
+
+
+function onReturnSelected(element){
+    if(element.checked)
+    {
+        returnCheckList.push(element.id);
+    }
+    else{
+        var index = checkList.indexOf(element.id);
+        if (index > -1) {
+            returnCheckList.splice(index, 1);
+        }
+    }
+
+    console.log(checkList);
+}
 
 function getUser(username){
     let url= 'http://localhost:9090/api/users/' + username;

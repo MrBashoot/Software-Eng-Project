@@ -53,16 +53,23 @@ class itemRepository {
         });
     }
 
-    getItemTest(){
-        return new Promise ((resolve,reject) =>{
-            this.readJsonFile('../data/itemTest.json').then(Items => {
-                resolve(Items);
-            }).catch(err => {
-                reject(err);
-            });
+    modifyItems(itemsList){
+        //console.log("Repo: " + JSON.stringify(itemsList));
+        this.getAllItems().then(items => {
+            //console.log("Repo: " + JSON.stringify(items));
+            for(var b=0; b<itemsList.length; b++){
+               for(var i=0; i<items.length; i++){
+                   if(items[i].itemId == itemsList[b].itemId && !items[i].hasOwnProperty("dueDate")){
+                       //console.log(items[i]);
+                           items.splice(i, 1);
+                       items.push(itemsList[b]);
+                   }
+               }
+           }
+            //console.log("Repo: " + JSON.stringify(items));
+            this.writeJsonFile('./data/Item.json', items);
         });
     }
-
 
     writeJsonFile(filePath, data) {
         return new Promise((resolve, reject) => {
