@@ -24,17 +24,20 @@ class userRepository {
 
     modifyUser(user){
         //console.log("UserRepo: " + JSON.stringify(user));
+        console.log("Hello");
+        console.log(user);
         this.getAllUsers().then(users => {
-            //console.log("UserRepo: " + JSON.stringify(users));
-                for(var i=0; i<users.length; i++){
+            console.log("Hello");
+            console.log("UserRepo: " + JSON.stringify(users));
+            console.log(user);
+            for(var i=0; i<users.length; i++){
                     if(users[i].id == user.id){
                         //console.log(users[i]);
-                        users.splice(i, 1);
                         users.push(user);
-                        break;
+                        users.splice(i, 1);
                     }
                 }
-            //console.log("UserRepo: " + JSON.stringify(users));
+            console.log("UserRepo: " + JSON.stringify(users));
             this.writeJsonFile('./data/Member.json', users);
         });
     }

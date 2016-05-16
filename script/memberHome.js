@@ -22,13 +22,31 @@ $(document).ready(function(){
 });
 
 function onReturn(){
+    let userId = USER.id;
+    let RItem = {
+        items: returnCheckList,
+        userId: userId
+    };
 
+    let url = "http://192.168.100.2:9090/api/items/return";
+    fetch(url, {
+        method: "put",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(RItem)
+    }).then(() =>{
+        console.log("here");
+        fillPage(USER);
+        returnCheckList = new Array();
+    })
 }
 
 function onBorrow(){
+    let userId = USER.id;
     console.log(checkList);
     console.log(JSON.stringify(USER));
-    let userId = USER.id;
+
 
     if(USER.noOfBorrowed >=5){
         alert("You have exceed your maximum number of borrowed items");
@@ -81,16 +99,16 @@ function onSelected(element){
 function onReturnSelected(element){
     if(element.checked)
     {
-        returnCheckList.push(element.id);
+        returnCheckList.push(element.value);
     }
     else{
-        var index = checkList.indexOf(element.id);
+        var index = returnCheckList.indexOf(element.value);
         if (index > -1) {
             returnCheckList.splice(index, 1);
         }
     }
 
-    console.log(checkList);
+    console.log(returnCheckList);
 }
 
 function getUser(username){
@@ -99,12 +117,12 @@ function getUser(username){
 }
 
 function getAllItems(){
-    let url= 'http://localhost:9090/api/items';
+    let url= 'http://192.168.100.2:9090/api/items';
     return fetch(url).then(response => response.json());
 }
 
 function getBorrowedItems(username){
-    let url = 'http://localhost:9090/api/items/' + username;
+    let url = 'http://192.168.100.2:9090/api/items/' + username;
     return fetch(url).then(response => response.json());
 }
 
@@ -132,6 +150,7 @@ function fillItems (){
         itemsTemplate = Handlebars.compile(htmlTemplate);
 
     getAllItems().then(items => {
+        console.log("items" + items)
         $('#items-Table-Body').html(itemsTemplate({items}));
     });
 }

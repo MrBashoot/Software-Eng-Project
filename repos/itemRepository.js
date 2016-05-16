@@ -53,24 +53,29 @@ class itemRepository {
         });
     }
 
+
     modifyItems(itemsList){
         //console.log("Repo: " + JSON.stringify(itemsList));
         this.getAllItems().then(items => {
-            //console.log("Repo: " + JSON.stringify(items));
-            for(var b=0; b<itemsList.length; b++){
-               for(var i=0; i<items.length; i++){
-                   if(items[i].itemId == itemsList[b].itemId && !items[i].hasOwnProperty("dueDate")){
-                       //console.log(items[i]);
-                           items.splice(i, 1);
-                       items.push(itemsList[b]);
-                   }
-               }
-           }
-            //console.log("Repo: " + JSON.stringify(items));
+            console.log(itemsList);
+            console.log(itemsList.length);
+            console.log("Repo: " + JSON.stringify(items));
+            for(var b=0; b < itemsList.length; b++){
+                console.log("ellooo");
+                for(var i=0; i<items.length; i++){
+                    console.log("HERE");
+                    if(items[i].itemId == itemsList[b].itemId){
+                        console.log(items[i]);
+                        items.splice(i, 1);
+                        items.push(itemsList[b]);
+                    }
+                }
+            }
+            console.log("Repo: " + JSON.stringify(items));
             this.writeJsonFile('./data/Item.json', items);
         });
     }
-
+    
     writeJsonFile(filePath, data) {
         return new Promise((resolve, reject) => {
             this.fs.writeFile(filePath, JSON.stringify(data), error => {

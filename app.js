@@ -53,7 +53,7 @@ app.put('/api/items/borrow', (req,res) =>{
     userController.borrowItem(req,res);
 });
 
-app.put('/api/items/borrow', (req,res) =>{
+app.put('/api/items/return', (req,res) =>{
     console.log('EVENT:---(put)=> Return Item');
     userController.returnItem(req,res);
 });

@@ -18,8 +18,7 @@ class LoanedItem extends item {
         else{
             super(loanedItem.itemId, loanedItem.title , loanedItem.year ,loanedItem.type);
             super.loanItem();
-            this.dueDate = loanedItem.dueDate;
-            this.borrowDate = loanedItem.borrowDate;
+            this.setDates(super.getMaxLoan());
         }
     }
 
@@ -39,6 +38,10 @@ class LoanedItem extends item {
         this.borrowDate = this.dateFormater(new Date());
     }
 
+    returnItem(){
+        super.returnItem();
+    }
+
 
     dateFormater(date) {
     var d = new Date(date || Date.now()),
@@ -52,7 +55,10 @@ class LoanedItem extends item {
     return [day, month, year].join('/');
     }
 
-    getDueDate(){
+    loanItem () {
+        super.loanItem();
+    }
+        getDueDate(){
         return this.dueDate;
     }
 
@@ -64,6 +70,10 @@ class LoanedItem extends item {
         //Lacking Details In Use Case Specification
         //if the return date is after the due date the fine is calculated accordingly
         this.fine = 0;
+    }
+
+    setAvailable (available){
+        super.changeStatus(status);
     }
 
 

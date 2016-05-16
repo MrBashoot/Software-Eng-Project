@@ -19,8 +19,8 @@
 
 <script id="borrowed-item-template" type="text/x-handlebars-template">
     {{#each items}}
-    <tr onclick="onSelected();">
-        <td><input type="checkbox" id=borrowSelectId value="{{itemId}}"></td>
+    <tr>
+        <td><input type="checkbox" id=borrowSelectId value="{{itemId}}" onclick="onReturnSelected(this)"></td>
         <td>{{type}}</td>
         <td>{{title}}</td>
         <td>{{year}}</td>
@@ -39,6 +39,7 @@
         <td>{{title}}</td>
         <td>{{year}}</td>
         <td>{{status}}</td>
+        <td><input type="checkbox" id="extend" onclick="onSelected(this)"></td>
     </tr>
     {{/each}}
 </script>
@@ -124,6 +125,7 @@
                             <th>Title</th>
                             <th>year</th>
                             <th>Status</th>
+                            <th>Eexnted due date</th>
                             </thead>
                             </thead>
 
