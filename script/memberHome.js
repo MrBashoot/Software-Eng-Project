@@ -112,7 +112,7 @@ function onReturnSelected(element){
 }
 
 function getUser(username){
-    let url= 'http://localhost:9090/api/users/' + username;
+    let url= 'http://192.168.100.2:9090/api/users/' + username;
     return fetch(url).then(response => response.json());
 }
 
