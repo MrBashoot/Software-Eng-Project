@@ -1,0 +1,235 @@
+body {
+    background-color: white;
+}
+
+.login-header, .login-header h1{
+    font-family: "Times New Roman";
+    text-align: center;
+    font-size: 40px;
+    letter-spacing:5px;
+    color: black;
+    background-color: cornsilk ;
+    background-size: 100%;
+    padding-top: 17px;
+    padding-bottom: 13px;
+    max-width: 100%;
+
+}
+
+.panel {
+    margin-top: 57px;
+    float:right;
+    border-color: beige !important;
+
+}
+.panel-heading{
+    background-color: cornsilk;
+    border-color: cornsilk !important;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+
+}
+.panel-body {
+    padding-top: 30px;
+    border-color: cornsilk !important;
+}
+
+#login {
+    width: 90px;
+    margin-left: 40%;
+}
+
+#incorrectMessage {
+    color: red;
+}
+
+footer{
+    text-align: right;
+
+}
+.footer {
+    height: auto;
+    padding-bottom: 15px;
+    position: relative;
+    width: 100%;
+}
+.footer h3 {
+    border-bottom: 0.7px solid lightslategrey;
+    color: black;
+    font-size: 15px;
+    padding: 25px 0 7px;
+    text-align: left;
+}
+.footer ul {
+    text-align: left;
+    color: lightslategrey;
+    font-size: 13px;
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+    margin-top: 9px;
+}
+.footer a {
+    color: darkblue;
+    float: left;
+}
+
+.imp-links i {
+    color: darkblue;
+    float: left;
+    letter-spacing:3px;
+}
+
+.social li {
+    background: none cornflowerblue;
+    border: 2px solid cornflowerblue;
+    border-radius: 50%;
+    float: left;
+    height: 33px;
+    line-height: 33px;
+    width: 33px;
+    margin: 0 9px 0 0;
+    padding-left: 7px;
+    text-align: center;
+}
+.social li:hover a i {
+    border: 0;
+    background: transparent;
+    color: darkslateblue !important;
+}
+.social li a i {
+    font-size: 16px;
+    margin: 0;
+    color: white !important;
+}
+
+.mypage-header, .mypage-header h1{
+    font-family: "Times New Roman";
+    text-align: center;
+    font-size: 25px;
+    letter-spacing:5px;
+    color: black;
+    background-color: cornsilk !important;
+    background-size: 100%;
+    padding-top: 5px;
+    padding-bottom: 3px;
+    max-width: 100%;
+    border-radius: 17%;
+}
+
+.navbar-default {
+    margin-top: 7px;
+    background: floralwhite !important;
+    color: black !important;
+    font-weight: 200 !important;
+}
+.navbar-default .navbar-brand {
+    color: black !important;
+}
+.navbar-default .navbar-nav > li > a {
+    color: black !important;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    background-color: cornsilk !important;
+    font-weight: bold;
+}
+
+div.staticheader {
+    margin-top: 0;
+    margin-buttom: 15px;
+    text-align: right;
+}
+div.staticheader2, div.staticheader2 h4 {
+    margin-buttom: 15px;
+    margin-top: 0;
+    text-align: left;
+    margin-bottom: 0;
+}
+
+.pagination {
+    margin: 0px !important;
+    color:black;
+}
+
+#save-btn {
+    float: right;
+}
+
+.pagination li.active a {
+    background: darkgray;
+    color: white;
+    border-color: transparent;
+}
+.pagination li.active a:hover {
+    background: antiquewhite;
+    color: forestgreen;
+    border-color: transparent;
+}
+
+aside {
+    border-color: cornsilk !important;
+    border-right: solid;
+    border-bottom:solid;
+    border-left:solid;
+
+}
+
+aside h4, #mainsection h4, #mainsection2 h4, #mainsection3 h4, #completeTaskDiv h4, #updatdesection h4 {
+    background-color: cornsilk !important;
+    padding-top: 7px;
+    padding-bottom: 9px;
+    padding-left: 9px;
+    font-size:15px;
+    font-family: "Times New Roman";
+    letter-spacing: 3px;
+}
+
+.announcement {
+    font-family: "Times New Roman";
+    font-size: 16px;
+}
+
+.event-mon{
+    font-family: "Times New Roman";
+    font-size: 20px;
+}
+.event {
+    padding-left: 9px ;
+    padding-bottom: 9px;
+}
+
+#announcement-panel, #email-panel, #addTask-panel, #regParent-panel, #regStudent-panel {
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 5px;
+    margin: 0 0 0
+}
+
+#help-panel h4{
+    background-color: white !important;
+}
+
+.co-select{
+    padding: 0 0 0 0 !important;
+}
+
+#addtaskBtn {
+    width: 85%;
+}
+
+.error {
+    display: none;
+    margin-left: 10px;
+    color: red;
+}
+
+.pattern {
+    display: none;
+    margin-left: 10px;
+    color: blue;
+}
+
+a.title {
+    background-color: lightgoldenrodyellow !important;
+}

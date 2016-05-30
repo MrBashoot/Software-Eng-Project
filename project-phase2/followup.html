@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home-Parent</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script src="js/followup.js"></script>
+</head>
+<body>
+
+<script id="task-template" type="text/x-handlebars-template">
+    <table class="table table-responsive table-striped table-hover">
+        <h4>Tasks:</h4>
+        <thead>
+        <th>Surah</th>
+        <th>From Aya</th>
+        <th>To Aya</th>
+        <th>Task Type</th>
+        <th>Due Date</th>
+        <th>Completed Date</th>
+        <th>Mastery Level</th>
+        <th>Comment</th>
+        </thead>
+
+        <tbody>
+        {{#each tasks}}
+        <tr>
+            <td>{{surahName}}</td>
+            <td>{{fromAya}}</td>
+            <td>{{toAya}}</td>
+            <td>{{type}}</td>
+            <td>{{dueDate}}</td>
+            <td>{{completedDate}}</td>
+            <td>{{masteryLevel}}</td>
+            <td>{{comment}}</td>
+        </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</script>
+<script id="messages-template" type="text/x-handlebars-template">
+    <h4>Messages:</h4>
+    <table class="table table-striped table-responsive">
+        <thead>
+        <th>Subject</th>
+        <th>Message</th>
+        <th>Date</th>
+        <th>Attachment</th>
+        </thead>
+        <tbody>
+        {{#each messages}}
+        <tr>
+            <td>
+                {{ subject }}
+            </td>
+            <td>
+                {{ message }}
+            </td>
+            <td>
+                {{date}}
+            </td>
+            <td>
+                {{#if imageUrl}}
+                <a href="/uploads/{{imageUrl}}" target="_blank">
+                    <img style="with:100px; height:100px" src="/uploads/{{imageUrl}}" alt="No attachment">
+                </a>
+                {{/if}}
+            </td>
+        </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</script>
+<script id="announcements-template" type="text/x-handlebars-template">
+    <h4>Announcements:</h4>
+    <table class="table table-responsive table-hover">
+        <tbody>
+        {{#each announcements}}
+        <tr>
+            <td>
+                <strong>{{subject}}</strong> <br>
+                {{message}} <br>
+
+                {{#if imageUrl}}
+                <a href="/uploads/{{imageUrl}}" target="_blank">
+                    <img style="with:100px; height:100px" src="/uploads/{{imageUrl}}" alt="No attachment">
+                </a>
+                {{/if}}
+            </td>
+        </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</script>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-xs-12">
+            <header>
+                <div class="login-header">
+                    <img src="image/logo.png" alt="HalaqaMetrash" style="width:80px;height:80px;">
+                    <h1 style="display: inline">HalaqaMetrash Web App</h1>
+                </div>
+            </header>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Menu -->
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="collapse navbar-collapse" id="myMenu">
+                    <ul class="nav navbar-nav navbar-right">
+
+                        <li><a href="followup.html">Student Follow-up</a></li>
+                        <li class="coordinatorMenu"><a href="addStudent.html">Register Student</a></li>
+                        <li class="coordinatorMenu"><a href="sendMessage.html">Make Announcement</a></li>
+
+                        <li><a href="login.html">
+                            <span class="glyphicon glyphicon-log-out"></span>Logout
+                        </a></li>
+                        <a class="navbar-brand"><i class="fa fa-user">&nbsp;&nbsp;</i>
+                            <span id="username">Name</span>&nbsp;&nbsp;
+                        </a>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 col-xs-12">
+            <section>
+                <div class="row">
+                    <label for="studentsDD" class="col-md-2 col-xs-2">Student: </label>
+                    <div class="col-md-4 col-xs-4 ">
+                        <select id="studentsDD" class="form-control">
+                        </select>
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="row">
+                    <aside>
+                        <div id="tasksTableDiv" class="col-xs-12 col-sm-12 col-md-12"></div>
+                    </aside>
+                </div>
+
+                <br>
+
+                <div class="row">
+                    <aside>
+                        <div id="messagesTableDiv"></div>
+                    </aside>
+                </div>
+            </section>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-12">
+            <aside>
+                <div id="announcementsTableDiv"></div>
+            </aside>
+        </div>
+    </div>
+</div>
+</body>
+</html>

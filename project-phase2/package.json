@@ -1,0 +1,14 @@
+{
+  "name": "HalaqaMetrash",
+  "version": "0.0.1",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "cookie-parser": "^1.4.1",
+    "express": "^4.13.4",
+    "moment": "^2.13.0",
+    "serve-favicon": "^2.3.0",
+    "multer": "^1.1.0",
+    "node-uuid": "^1.4.7"
+    "mongoose": "^4.4.14"
+  }
+}

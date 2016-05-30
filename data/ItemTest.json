@@ -1,1 +1,56 @@
-[{"itemId":"1","title":"Clock","year":"2016","loaned":"no","reserved":"no","status":"available","type":"book","MAX_LOAN":4},{"itemId":"2","title":"Watch","year":"2016","loaned":"no","reserved":"no","status":"available","type":"book","MAX_LOAN":4},{"itemId":"3","title":"BMW","year":"2016","loaned":"yes","reserved":"no","status":"unavailable","type":"car","MAX_LOAN":1,"dueDate":"21/05/2016","borrowDate":"14/05/2016"},{"itemId":"4","title":"MERC","year":"2016","loaned":"yes","reserved":"no","status":"unavailable","type":"car","MAX_LOAN":1,"dueDate":"21/05/2016","borrowDate":"14/05/2016"},{"itemId":"1","title":"Clock","year":"2016","loaned":"yes","reserved":"no","status":"unavailable","type":"book","MAX_LOAN":4}]
+[
+  {
+    "itemId": "1",
+    "title": "Clock",
+    "year": "2016",
+    "loaned": "no",
+    "reserved": "no",
+    "status": "available",
+    "type": "book",
+    "MAX_LOAN": 4
+  },
+  {
+    "itemId": "2",
+    "title": "Watch",
+    "year": "2016",
+    "loaned": "no",
+    "reserved": "no",
+    "status": "available",
+    "type": "book",
+    "MAX_LOAN": 4
+  },
+  {
+    "itemId": "3",
+    "title": "BMW",
+    "year": "2016",
+    "loaned": "yes",
+    "reserved": "no",
+    "status": "unavailable",
+    "type": "car",
+    "MAX_LOAN": 1,
+    "dueDate": "21/05/2016",
+    "borrowDate": "14/05/2016"
+  },
+  {
+    "itemId": "4",
+    "title": "MERC",
+    "year": "2016",
+    "loaned": "yes",
+    "reserved": "no",
+    "status": "unavailable",
+    "type": "car",
+    "MAX_LOAN": 1,
+    "dueDate": "21/05/2016",
+    "borrowDate": "14/05/2016"
+  },
+  {
+    "itemId": "1",
+    "title": "Clock",
+    "year": "2016",
+    "loaned": "yes",
+    "reserved": "no",
+    "status": "unavailable",
+    "type": "book",
+    "MAX_LOAN": 4
+  }
+]

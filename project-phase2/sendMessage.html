@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Instructor Homepage</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!--Link for favicon-->
+    <link rel="icon" type="image/ico" sizes="16x16" href="/image/favicon.ico">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" rel="stylesheet"/>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+    <!-- Link for making the navbar toggle down on smaller screen -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+    <script src="js/sendMessage.js"></script>
+</head>
+<body>
+
+<!-- Banner -->
+<header>
+    <div class="login-header">
+        <img src="image/logo.png" alt="HalaqaMetrash" style="width:80px;height:80px;">
+        <h1 style="display: inline">HalaqaMetrash Web App</h1>
+    </div>
+</header>
+
+<!-- Menu -->
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myMenu">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+        </div>
+
+        <div class="collapse navbar-collapse" id="myMenu">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="coordinatorMenu"><a href="followup.html">Student Follow-up</a></li>
+                <li class="teacherMenu"><a href="manageTasks.html">Manage Tasks</a></li>
+                <li><a href="login.html">
+                    <span class="glyphicon glyphicon-log-out"></span> Logout
+                </a></li>
+                <a class="navbar-brand"><i class="fa fa-user">&nbsp;&nbsp;</i>
+                    <span id="userName">Instructor Name</span>&nbsp;&nbsp;
+                </a>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<!--Main Section-->
+<div class="container">
+    <div class="row">
+        <div id="mainsection" class="col-md-10">
+            <h4 id="formTitle">Send Message</h4>
+            <div id="email-panel" class="panel panel-default">
+                <div class="panel-body">
+                    <form name="form" id="form" class="form-horizontal"
+                          enctype="multipart/form-data" method="post" action="/api/messages">
+                        <div class="input-group teacherMenu">
+                                <span class="input-group-addon"><em class="fa fa-user"></em></span>
+                                <select id="studentsDD" name="studentId" class="form-control filter-dd">
+                                    <option value=""></option>
+                                </select>
+                        </div>
+                        <br>
+                        <div>
+                            <div class="input-group">
+                                <span class="input-group-addon"><em class="glyphicon glyphicon-pencil"></em></span>
+                                <input id="subject" type="text" class="form-control" name="subject" value=""
+                                       placeholder="Subject">
+                            </div>
+                        </div>
+                        <br>
+                        <div>
+                            <div class="input-group">
+                                <span class="input-group-addon"><em class="glyphicon glyphicon-comment"></em></span>
+                            <textarea id="content" class="form-control" rows="7" name="message" value=""
+                                      placeholder="Message"></textarea>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="input-group">
+                            <label>Image: </label>
+                            <input type="file" id="msgImage" name="msgImage" class="form-control">
+                        </div>
+                        <div class="text-center" >
+                            <br>
+                            <button id="submit" class="btn btn-info" type="submit"> Submit</button>
+                            <br>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

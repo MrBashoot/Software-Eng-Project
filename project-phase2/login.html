@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!--Link for favicon-->
+    <link rel="icon" type="image/ico" sizes="16x16" href="/image/favicon.ico">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" rel="stylesheet"/>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+    <!-- Link for making the navbar toggle down on smaller screen -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="js/login.js"></script>
+
+
+</head>
+<body>
+
+<!-- Banner -->
+<header>
+    <div class="login-header">
+        <img src="image/logo.png" alt="HalaqaMetrash" style="width:80px;height:80px;">
+        <h1 style="display: inline">HalaqaMetrash Web App</h1>
+    </div>
+</header>
+
+<!-- Login Form-->
+<form id="login-form">
+    <div class="container">
+        <div class="col-md-6 col-xs-12">
+            <img src="image/login.png" style="width: 500px; height: 500px">
+        </div>
+        <div id="loginbox" class="col-md-6 col-xs-12">
+            <div class="panel">
+                <div class="panel-heading">
+                    <div class="panel-title text-center">Login</div>
+                </div>
+                <div><br/></div>
+                <div class="panel-body">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                        </span>
+                        <input type="text" id="username" name="username" class="form-control" placeholder="Username"
+                               required>
+                    </div>
+                    <div><br/></div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+                        </span>
+                        <input type="password" id="password" name="password" class="form-control" placeholder="Password"
+                               required>
+                    </div>
+                    <br>
+                    <div class="alert alert-danger fade in" style="display:none">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <div id="errMsg"></div>
+                    </div>
+                    <br>
+                    <div class="col-sm-12 controls">
+                        <input id="submitBtn" class="btn btn-primary btn-block" type="submit" value="Login">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+</body>
+</html>

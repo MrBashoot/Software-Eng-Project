@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Tasks</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!--Link for favicon-->
+    <link rel="icon" type="image/ico" sizes="16x16" href="/image/favicon.ico">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" rel="stylesheet"/>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Link for making the navbar toggle down on smaller screen -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+    <script src="js/manageTasks.js"></script>
+</head>
+<body>
+
+<script id="task-template" type="text/x-handlebars-template">
+    <div class="table-responsive">
+        <table class="table table-condensed cust-table">
+            <thead>
+            <tr>
+                <th>Student ID</th>
+                <th>Task ID</th>
+                <th>Surah Name</th>
+                <th>From Aya</th>
+                <th>To Aya</th>
+                <th>Type</th>
+                <th>Due</th>
+                <th>Completed</th>
+                <th>Mastery Level</th>
+                <th>Comment</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            {{#each tasks}}
+            <tr>
+                <td>{{studentId}}</td>
+                <td>{{taskId}}</td>
+                <td>{{surahName}}</td>
+                <td>{{fromAya}}</td>
+                <td>{{toAya}}</td>
+                <td>{{type}}</td>
+                <td>{{dueDate}}</td>
+                <td>
+                    {{completedDate}}
+                <td>
+                    {{masteryLevel}}
+                </td>
+                <td>
+                    {{comment}}
+                </td>
+                <td>
+                    {{#if completedDate}}
+                    {{else}}
+                    <a href="" data-taskId="{{taskId}}" class="deleteButton btn mini red-stripe glyphicon glyphicon-trash"
+                       role="button" title="Delete Task"></a>
+                    {{/if}}
+                </td>
+                <td>
+                    {{#if completedDate}}
+                    {{else}}
+                    <a href="javascript:void(0);" data-taskId="{{taskId}}"
+                       class="updateButton btn mini red-stripe glyphicon glyphicon-pencil"
+                       role="button" title="Update Task"></a>
+                    {{/if}}
+                </td>
+                <td>
+                    {{#if completedDate}}
+                    {{else}}
+                    <a href="javascript:void(0);" data-taskId="{{taskId}}"
+                       class="completeButton btn mini red-stripe glyphicon glyphicon-ok"
+                       role="button" title="Complete Task"></a>
+                    {{/if}}
+                </td>
+
+            </tr>
+            {{/each}}
+            </tbody>
+        </table>
+
+    </div>
+</script>
+<script id="complete-template" type="text/x-handlebars-template">
+    <form class="form-horizontal form-inline">
+        <input type="hidden" id="taskId" value="{{taskId}}">
+        <label class="col-md-3 control-label">Student:</label>
+        <div class="col-md-9">
+            <input type="text" class="form-control" value="{{studentId}}" readonly>
+        </div>
+        <label class="col-md-3 control-label">Surah Id:</label>
+        <div class="col-md-9">
+            <input type="text" class="form-control" value="{{surahId}}" readonly>
+        </div>
+        <label class="col-md-3 control-label">Surah Name:</label>
+        <div class="col-md-9">
+            <input type="text" class="form-control" value="{{surahName}}" readonly>
+        </div>
+        <label class="col-md-3 control-label">From Aya:</label>
+        <div class="col-md-9">
+            <input type="text" class="form-control" value="{{fromAya}}" readonly>
+        </div>
+        <label class="col-md-3 control-label">To Aya:</label>
+        <div class="col-md-9">
+            <input type="text" class="form-control" value="{{toAya}}" readonly>
+        </div>
+        <br><br>
+        <label class="col-md-3 control-label">Task Type:</label>
+        <div class="col-md-9">
+            <input type="text" class="form-control" id="type" value="{{type}}" readonly>
+        </div>
+        <br><br>
+        <label class="col-md-3 control-label">Due Date:</label>
+        <div class="col-md-9">
+            <input type="text" class="form-control" id="dueDate" value="{{dueDate}}" readonly>
+        </div>
+        <br><br>
+        <label class="col-md-3 control-label">Completed Date:</label>
+        <div class="col-md-9">
+            <input type="date" class="form-control" id="completedDate">
+        </div>
+        <br><br>
+        <label class="col-md-3 control-label">Mastery Level:</label>
+        <div class="col-md-9">
+            <select id="masteryLevel" class="form-control">
+                <option value=""></option>
+                <option value="Excellent">Excellent</option>
+                <option value="Ok">Ok</option>
+                <option value="Poor">Poor</option>
+            </select>
+        </div>
+        <br><br>
+        <label class="col-md-3 control-label">Comment:</label>
+        <div class="col-sm-9">
+            <textarea class="form-control" id="comment"></textarea>
+        </div>
+    </form>
+</script>
+<script id="update-template" type="text/x-handlebars-template">
+    <form method="post" class="form-horizontal form-inline">
+        {{#if taskId}}
+            <input type="hidden" id="taskId" value="{{taskId}}">
+            <input type="hidden" id="studentId" value="{{studentId}}">
+        {{else}}
+            <input type="hidden" id="taskId" value="">
+            <label class="col-md-3 control-label">Student:</label>
+            <div class="col-md-9">
+                <select id="studentId" class="form-control">
+                    <option value=""></option>
+                </select>
+            </div>
+            <br><br>
+        {{/if}}
+
+        <label class="col-md-3 control-label">Surah:</label>
+        <span class="col-md-9">
+            <select id="surahsDD" class="form-control">
+                <option value=""></option>
+            </select>
+        </span>
+        <br><br>
+        <div class="range-selector">
+            <label class="col-md-3 control-label" for="fromAya">From Aya:
+            </label>
+            <div class="col-md-9">
+                <output style="text-align: center;" id="selectedFromAya" for="fromAya">1</output>
+                1 <input style="display: inline-block; width: 80%;" type="range" id="fromAya" name="fromAya"
+                         min="1" max="1"
+                         oninput="selectedFromAya.value = fromAya.value;">
+                <span id="fromMaxAya"></span>
+            </div>
+        </div>
+        <br><br>
+        <div class="range-selector">
+            <label class="col-md-3 control-label" for="toAya">To Aya:
+            </label>
+            <div class="col-md-9">
+                <output style="text-align: center;" id="selectedToAya" for="toAya">1</output>
+                1 <input style="display: inline-block; width: 80%;" type="range" id="toAya" name="toAya"
+                         min="1" max="1" value="{{toAya}}"
+                         oninput="selectedToAya.value = toAya.value;">
+                <span id="toMaxAya"></span>
+            </div>
+        </div>
+        <br><br>
+        <br><br>
+        <label class="col-md-3 control-label">Due Date:</label>
+        <div class="col-md-9">
+            <input type="date" class="form-control" id="dueDate" value="">
+        </div>
+
+        <label class="col-md-3 control-label">Task Type:</label>
+        <div class="col-md-9">
+            <br>
+            <label style="text-align: left">
+                <input type="radio" id="memorization" name="taskType" value="Memorization"> Memorization
+            </label>
+            <label style="text-align: left">
+                <input type="radio" id="revision" name="taskType" value="Revision"> Revision
+            </label>
+        </div>
+    </form>
+</script>
+
+<!-- Banner -->
+<header>
+    <div class="login-header">
+        <img src="image/logo.png" alt="HalaqaMetrash" style="width:80px;height:80px;">
+        <h1 style="display: inline">HalaqaMetrash Web App</h1>
+    </div>
+</header>
+
+<!-- Menu -->
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="collapse navbar-collapse" id="myMenu">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="sendMessage.html">Send Message</a></li>
+                <li><a href="login.html">
+                    <span class="glyphicon glyphicon-log-out"></span>Logout
+                </a></li>
+                <a class="navbar-brand"><i class="fa fa-user">&nbsp;&nbsp;</i>
+                    <span id="userName">Name</span>&nbsp;&nbsp;
+                </a>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!--Main Section and side bar-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 form-inline">
+            <label for="studentsDD">Student:</label>
+            <select id="studentsDD" class="form-control filter-dd">
+                <option value=""></option>
+            </select>
+
+            <label for="taskStatusDD">Task Status:</label>
+            <select id="taskStatusDD" class="form-control filter-dd">
+                <option value="All">All</option>
+                <option value="Pending" selected>Pending Tasks</option>
+                <option value="Completed">Completed Tasks</option>
+            </select>
+        </div>
+        <br><br><br>
+        <button id="addTaskBtn" type="button" class="btn btn-primary">Add task</button>
+        <br>
+        <div id="mainsection" class="col-md-12">
+            <br>
+            <h4>Tasks</h4>
+            <div id="tasks-table" class="table-responsive"></div>
+        </div>
+        <div id="completeTaskDiv" class="col-md-8"></div>
+        <div id="updateTaskDiv" class="col-md-8"></div>
+    </div>
+</div>
+</body>
