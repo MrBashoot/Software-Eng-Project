@@ -16,4 +16,4 @@ let parentSchema = new mongoose.Schema({
     students: []
 });
 
-module.exports = mongoose.model('parent', parentSchema);
+module.exports = mongoose.model('parent', parentSchema); //hello world
