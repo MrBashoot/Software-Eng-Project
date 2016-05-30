@@ -13,9 +13,15 @@ let parentSchema = new mongoose.Schema({
     email: String,
     username: String,
     password: String,
-    students: []
+    students: [{
+        studentID: Number,
+        firstName: String,
+        lastName: String,
+        dob: String,
+        gender: String,
+        schoolGrade: Number,
+        teacherID: { type : mongoose.Schema.ObjectId, ref : 'teacher' }   
+    }]
 });
 
 module.exports = mongoose.model('parent', parentSchema); //hello world
-
-//qwde
