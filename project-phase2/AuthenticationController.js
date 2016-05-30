@@ -16,7 +16,13 @@ class AuthenticationController {
                 res.status(400).end();
             });
     }
+
+    initDB() {
+        this.authenticationRepository.initDb();
+    }
+
 }
+
 
 module.exports = new AuthenticationController();
 

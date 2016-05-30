@@ -4,6 +4,7 @@ let bodyParser = require('body-parser');
 let favicon = require('serve-favicon');
 let authenticationController = require('./AuthenticationController');
 let halaqaController = require('./HalaqaController');
+let mongoose = require('mongoose');
 
 let fs = require('fs'),
     //multer is a package used to ease uploading files
@@ -18,6 +19,7 @@ let app = express();
 //Allow serving static files
 app.use(express.static(__dirname));
 let port = 6070;
+mongoose.Promise = global.Promise;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(favicon(__dirname + '/image/favicon.ico'));
@@ -78,7 +80,16 @@ app.get('/api/parents', (req, res) => halaqaController.getParents(req, res));
 app.post('/api/students', (req, res) => halaqaController.addParent(req, res));
 app.put('/api/students/:parentId', (req, res) => halaqaController.addStudent(req, res));
 
+let mongoDatabase = 'mongodb://localhost/ComDB';
+let dbConnection = mongoose.connect(mongoDatabase, function(err) {
+    if (err) {
+        console.log(`Connection to ${mongoDatabase} failed \n`, err);
+        return;
+    }
 
-app.listen(port, function () {
-    console.log("HalaqaMetrash App is running on http://localhost:" + port);
+    authenticationController.initDB();
+
+    app.listen(port, function () {
+        console.log("HalaqaMetrash App is running on http://localhost:" + port);
+    });
 });

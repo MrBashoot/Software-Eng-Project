@@ -11,6 +11,7 @@ let teacherSchema = new mongoose.Schema({
     lastName: String,
     email: String,
     password: String,
+    halaqa: String,
     isCoordinator: Boolean
 });
 
