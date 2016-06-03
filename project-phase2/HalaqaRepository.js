@@ -53,9 +53,9 @@ class HalaqaRepository {
     getStudentTasks(studentId, taskStatus) {
         return this.getStudents().then(students=>{
             if(taskStatus=='pending')
-                return this.task.find({studentID: studentId, completedDate: undefined});
+                return this.task.find({studentID: studentId, completedDate: null});
             else
-                return this.task.find({studentID: studentId, completedDate: {$ne: undefined}});
+                return this.task.find({studentID: studentId, completedDate: {$ne: null}});
         })
     }
 
@@ -82,7 +82,7 @@ class HalaqaRepository {
             return this.utils.writeToJsonFile('./data/task.json', tasks);
         });
     }
-
+    
     updateTask(updatedTask) {
         return this.utils.readJsonFile('./data/task.json').then(tasks => {
             let taskIndex = tasks.findIndex(t => t.taskId === updatedTask.taskId);
@@ -106,7 +106,7 @@ class HalaqaRepository {
             return messages.filter(m=> m.studentId === studentId);
         });
     }
-
+    
     addMessage(message) {
         return this.utils.readJsonFile('./data/message.json').then(messages => {
             let maxId = Math.max.apply(Math, messages.map(m => m.id)) + 1;
@@ -172,11 +172,12 @@ class HalaqaRepository {
         //Uncomment to empty the database
         this.emptyDB();
         //If the db is empty then init the db with data in json files
-        this.surah().then(tasks => {
-            console.log('Surah Count: ' + tasks.length + ' comment out this.emptyDB() to stop re-initializing the database');
-            if (parents.length == 0) {
-                this.writeStaffToDB();
-                this.writeParentsToDB();
+        this.getSurahs().then(surahs => {
+            console.log('Surah Count: ' + surahs.length + ' comment out this.emptyDB() to stop re-initializing the database');
+            if (surahs.length == 0) {
+                this.writeSurahsToDB();
+                this.writeTasksToDB();
+                this.writeMessagesToDB();
             }
         }).catch(err => console.log(err));
     }
@@ -185,7 +186,68 @@ class HalaqaRepository {
         return this.teacher.find({});
     }
 
-    getSurahs
+    writeSurahsToDB() {
+        let fs = require('fs');
+        fs.readFile('./data/surah.json', (err, fileData) => {
+            if (err) {
+                console.log(err);
+            }
+            else {
+                let surahs = JSON.parse(fileData);
+                for (let surah of surahs) {
+                    this.addSurahToDb(surah);
+                }
+            }
+        });
+    }
+
+
+    addSurahToDb (newSurah){
+        return this.surah.create(newSurah);
+    }
+
+
+
+    writeTasksToDB() {
+        let fs = require('fs');
+        fs.readFile('./data/task.json', (err, fileData) => {
+            if (err) {
+                console.log(err);
+            }
+            else {
+                let tasks = JSON.parse(fileData);
+                for (let task of tasks) {
+                    this.addTaskToDb(task);
+                }
+            }
+        });
+    }
+
+    addTaskToDb (newTask){
+        return this.task.create(newTask);
+    }
+
+
+    writeMessagesToDB() {
+        let fs = require('fs');
+        fs.readFile('./data/message.json', (err, fileData) => {
+            if (err) {
+                console.log(err);
+            }
+            else {
+                let messages = JSON.parse(fileData);
+                for (let message of messages) {
+                    this.addMessageToDb(message);
+                }
+            }
+        });
+    }
+
+    addMessageToDb (newMessage){
+        return this.message.create(newMessage);
+    }
+
+
 }
 
 module.exports = new HalaqaRepository();
