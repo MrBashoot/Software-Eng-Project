@@ -51,12 +51,10 @@ class HalaqaRepository {
     }
 
     getStudentTasks(studentId, taskStatus) {
-        return this.getStudents().then(students=>{
-            if(taskStatus=='pending')
-                return this.task.find({studentID: studentId, completedDate: undefined});
-            else
-                return this.task.find({studentID: studentId, completedDate: {$ne: undefined}});
-        })
+        if(taskStatus=='pending')
+            return this.task.find({studentID: studentId, completedDate: undefined});
+        else
+            return this.task.find({studentID: studentId, completedDate: {$ne: undefined}});
     }
 
     getTask(taskId) {
@@ -155,7 +153,7 @@ class HalaqaRepository {
     getParents() {
         return this.utils.readJsonFile('./data/student.json').then(parents => {
             for(let parent of parents) {
-               delete parent.students;
+                delete parent.students;
             };
 
             return parents;
