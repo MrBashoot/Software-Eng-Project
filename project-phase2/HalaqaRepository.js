@@ -27,11 +27,11 @@ class HalaqaRepository {
         //    let students = this.utils.flattenMultiArray(parents.map(p=> p.students));
         //    return students.filter(s => s.teacherId === teacherId);
         //});
-
-        this.getStudents().then(students => {
-            return students.filter(s => s.teacherId === teacherId);
+        return this.parent.find({}).then(parents => {
+            let students = this.utils.flattenMultiArray(parents.map(p=> p.students));
+            students=students.filter(s=>s.teacherID==teacherId);
+            return students;
         });
-
         //return this.parent.find({teacherID: teacherId});
     }
 

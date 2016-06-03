@@ -35,7 +35,7 @@ class Utils {
 
     flattenMultiArray(arrayOfArrays) {
         //Using ES2015 spread operator to flatten multidimensional arrayOfArrays
-        return [].concat(...arrayOfArrays);
+        return [].concat.apply([], arrayOfArrays);
     }
 }
 
