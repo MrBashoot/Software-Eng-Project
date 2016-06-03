@@ -51,18 +51,12 @@ class HalaqaRepository {
     }
 
     getStudentTasks(studentId, taskStatus) {
-        return this.utils.readJsonFile('./data/task.json').then(tasks => {
-            tasks = tasks.filter(t => t.studentId === studentId);
-
-            if (taskStatus === "Completed") {
-                tasks = tasks.filter(tasks => tasks.completedDate);
-            }
-            else if (taskStatus === "Pending") {
-                tasks = tasks.filter(tasks => tasks.completedDate === undefined);
-            }
-
-            return tasks;
-        });
+        return this.getStudents().then(students=>{
+            if(taskStatus=='pending')
+                return this.task.find({studentID: studentId, completedDate: null});
+            else
+                return this.task.find({studentID: studentId, completedDate: {$ne: null}});
+        })
     }
 
     getTask(taskId) {
