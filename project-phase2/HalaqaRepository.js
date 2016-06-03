@@ -58,10 +58,7 @@ class HalaqaRepository {
     }
 
     getTask(taskId) {
-        return this.utils.readJsonFile('./data/task.json').then(tasks => {
-            tasks = tasks.filter(t => t.taskId === taskId);
-            return tasks[0];
-        });
+        return this.task.find({taskId: taskId});
     }
 
     deleteTask(taskId) {
