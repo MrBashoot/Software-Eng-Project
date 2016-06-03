@@ -3,27 +3,43 @@
 class HalaqaRepository {
     constructor() {
         this.utils = require('./Utils');
+        this.parent = require('./models/parentModel')
     }
 
     getStudents() {
-        return this.utils.readJsonFile('./data/student.json').then(parents => {
+        //return this.utils.readJsonFile('./data/student.json').then(parents => {
+        //    let students = this.utils.flattenMultiArray(parents.map(p=> p.students));
+        //    return students;
+        //});
+
+        return this.parent.find({}).then(parents => {
             let students = this.utils.flattenMultiArray(parents.map(p=> p.students));
             return students;
-        });
+        })
     }
 
     getTeacherStudents(teacherId) {
-        return this.utils.readJsonFile('./data/student.json').then(parents => {
-            let students = this.utils.flattenMultiArray(parents.map(p=> p.students));
+        //return this.utils.readJsonFile('./data/student.json').then(parents => {
+        //    let students = this.utils.flattenMultiArray(parents.map(p=> p.students));
+        //    return students.filter(s => s.teacherId === teacherId);
+        //});
+
+        this.getStudents().then(students => {
             return students.filter(s => s.teacherId === teacherId);
         });
+
+        //return this.parent.find({teacherID: teacherId});
     }
 
     getParentStudents(parentId) {
-        return this.utils.readJsonFile('./data/student.json').then(parents => {
-            parents = parents.filter(p => p.qatariId === parentId);
-            return parents[0].students;
-        });
+        //return this.utils.readJsonFile('./data/student.json').then(parents => {
+        //    parents = parents.filter(p => p.qatariId === parentId);
+        //    return parents[0].students;
+        //});
+
+        this.parent.findOne({qatariId: parentId}).then(parent =>{
+            return parent[0].students;
+        })
     }
 
     getSurahs() {
