@@ -88,6 +88,7 @@ let dbConnection = mongoose.connect(mongoDatabase, function(err) {
     }
 
     authenticationController.initDB();
+    halaqaController.initDb();
 
     app.listen(port, function () {
         console.log("HalaqaMetrash App is running on http://localhost:" + port);

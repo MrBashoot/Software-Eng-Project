@@ -164,6 +164,10 @@ class HalaqaController {
             res.status(500).send(err);
         });
     }
+
+    initDb(){
+        this.halaqaRepository.initDb();
+    }
 }
 
 module.exports = new HalaqaController();
