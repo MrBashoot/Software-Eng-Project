@@ -31,7 +31,7 @@ class HalaqaRepository {
         this.getStudents().then(students => {
             return students.filter(s => s.teacherId === teacherId);
         });
-
+        
         //return this.parent.find({teacherID: teacherId});
     }
 
@@ -47,7 +47,7 @@ class HalaqaRepository {
     }
 
     getSurahs() {
-        return this.utils.readJsonFile('./data/surah.json');
+        return this.surahModel.find();
     }
 
     getStudentTasks(studentId, taskStatus) {
