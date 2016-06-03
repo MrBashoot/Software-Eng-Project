@@ -6,7 +6,7 @@ class HalaqaRepository {
         this.parent = require('./models/parentModel');
         this.teacher = require('./models/teacherModel');
         this.task = require('./models/taskModel');
-        this.surahModel = require('./models/surahModel');
+        this.surah = require('./models/surahModel');
         this.message = require('./models/messageModel');
     }
 
@@ -19,7 +19,7 @@ class HalaqaRepository {
         return this.parent.find({}).then(parents => {
             let students = this.utils.flattenMultiArray(parents.map(p=> p.students));
             return students;
-        })
+        });
     }
 
     getTeacherStudents(teacherId) {
@@ -43,11 +43,11 @@ class HalaqaRepository {
 
         this.parent.findOne({qatariId: parentId}).then(parent =>{
             return parent[0].students;
-        })
+        });
     }
 
     getSurahs() {
-        return this.utils.readJsonFile('./data/surah.json');
+        return this.surah.find({});
     }
 
     getStudentTasks(studentId, taskStatus) {
@@ -178,14 +178,20 @@ class HalaqaRepository {
         //Uncomment to empty the database
         this.emptyDB();
         //If the db is empty then init the db with data in json files
-        this.getParents().then(parents => {
-            console.log('Courses Count: ' + parents.length + ' comment out this.emptyDB() to stop re-initializing the database');
+        this.surah().then(tasks => {
+            console.log('Surah Count: ' + tasks.length + ' comment out this.emptyDB() to stop re-initializing the database');
             if (parents.length == 0) {
                 this.writeStaffToDB();
                 this.writeParentsToDB();
             }
         }).catch(err => console.log(err));
     }
+
+    getTasks(){
+        return this.teacher.find({});
+    }
+
+    getSurahs
 }
 
 module.exports = new HalaqaRepository();
