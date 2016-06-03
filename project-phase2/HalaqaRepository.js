@@ -53,9 +53,9 @@ class HalaqaRepository {
     getStudentTasks(studentId, taskStatus) {
         return this.getStudents().then(students=>{
             if(taskStatus=='pending')
-                return this.task.find({studentID: studentId, completedDate: null});
+                return this.task.find({studentID: studentId, completedDate: undefined});
             else
-                return this.task.find({studentID: studentId, completedDate: {$ne: null}});
+                return this.task.find({studentID: studentId, completedDate: {$ne: undefined}});
         })
     }
 
@@ -82,7 +82,7 @@ class HalaqaRepository {
             return this.utils.writeToJsonFile('./data/task.json', tasks);
         });
     }
-    
+
     updateTask(updatedTask) {
         return this.utils.readJsonFile('./data/task.json').then(tasks => {
             let taskIndex = tasks.findIndex(t => t.taskId === updatedTask.taskId);
@@ -106,7 +106,7 @@ class HalaqaRepository {
             return messages.filter(m=> m.studentId === studentId);
         });
     }
-    
+
     addMessage(message) {
         return this.utils.readJsonFile('./data/message.json').then(messages => {
             let maxId = Math.max.apply(Math, messages.map(m => m.id)) + 1;
