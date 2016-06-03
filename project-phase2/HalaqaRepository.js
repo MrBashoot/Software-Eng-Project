@@ -3,7 +3,11 @@
 class HalaqaRepository {
     constructor() {
         this.utils = require('./Utils');
-        this.parent = require('./models/parentModel')
+        this.parent = require('./models/parentModel');
+        this.teacher = require('./models/teacherModel');
+        this.task = require('./models/taskModel');
+        this.surahModel = require('./models/surahModel');
+        this.message = require('./models/messageModel');
     }
 
     getStudents() {
@@ -168,6 +172,19 @@ class HalaqaRepository {
         return this.utils.readJsonFile('./data/teacher.json').then(teachers=> {
             return teachers.filter(t=>t.isCoordinator != 1);
         });
+    }
+
+    initDb() {
+        //Uncomment to empty the database
+        this.emptyDB();
+        //If the db is empty then init the db with data in json files
+        this.getParents().then(parents => {
+            console.log('Courses Count: ' + parents.length + ' comment out this.emptyDB() to stop re-initializing the database');
+            if (parents.length == 0) {
+                this.writeStaffToDB();
+                this.writeParentsToDB();
+            }
+        }).catch(err => console.log(err));
     }
 }
 
