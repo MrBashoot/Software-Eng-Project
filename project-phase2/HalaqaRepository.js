@@ -164,6 +164,12 @@ class HalaqaRepository {
         });
     }
 
+    emptyDB() { //in case needed during testing
+        this.surah.remove({}).exec();
+        this.task.remove({}).exec();
+        this.message.remove({}).exec();
+    }
+
     initDb() {
         //Uncomment to empty the database
         //this.emptyDB();

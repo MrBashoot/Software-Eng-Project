@@ -69,10 +69,10 @@ class AuthenticationRepository {
 
     initDb() {
         //Uncomment to empty the database
-        this.emptyDB();
+        //this.emptyDB();
         //If the db is empty then init the db with data in json files
         this.getParents().then(parents => {
-            console.log('Courses Count: ' + parents.length + ' comment out this.emptyDB() to stop re-initializing the database');
+            console.log('Parents Count: ' + parents.length + ' comment out this.emptyDB() to stop re-initializing the database');
             if (parents.length == 0) {
                 this.writeStaffToDB();
                 this.writeParentsToDB();
