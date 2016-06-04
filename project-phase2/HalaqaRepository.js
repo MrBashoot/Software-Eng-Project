@@ -32,7 +32,6 @@ class HalaqaRepository {
             students=students.filter(s=>s.teacherId==teacherId);
             return students;
         });
-        //return this.parent.find({teacherId: teacherId});
     }
 
     getParentStudents(parentId) {
@@ -42,7 +41,7 @@ class HalaqaRepository {
         //});
 
         this.parent.findOne({qatariId: parentId}).then(parent =>{
-            return parent[0].students;
+            return parent.students;
         });
     }
 
@@ -121,13 +120,17 @@ class HalaqaRepository {
         let newId;
         return this.generateStudentId().then(id => {
             newId = id;
-            return this.utils.readJsonFile('./data/student.json');
-        }).then(parents => {
-            if (newParent.students) {
+        //    return this.utils.readJsonFile('./data/student.json');
+        //}).then(parents => {
+        //    if (newParent.students) {
+        //        newParent.students[0].studentId = newId;
+        //    }
+        //    parents.push(newParent);
+        //    return this.utils.writeToJsonFile('./data/student.json', parents);
+            if (newParent.students){
                 newParent.students[0].studentId = newId;
             }
-            parents.push(newParent);
-            return this.utils.writeToJsonFile('./data/student.json', parents);
+            return this.parent.create({newParent});
         });
     }
 
