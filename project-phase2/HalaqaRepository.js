@@ -174,9 +174,12 @@ class HalaqaRepository {
     }
 
     getTeachers() {
-        return this.utils.readJsonFile('./data/teacher.json').then(teachers=> {
-            return teachers.filter(t=>t.isCoordinator != 1);
-        });
+       /* return this.utils.readJsonFile('./data/teacher.json').then(teachers=> {
+            return teachers.filter(t=>t.isCoordinator != 1);*/
+
+        return this.teacher.find();
+
+
     }
 
     emptyDB() { //in case needed during testing
