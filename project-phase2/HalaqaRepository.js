@@ -68,9 +68,6 @@ class HalaqaRepository {
             tasks.splice(taskIndex, 1);
             return this.utils.writeToJsonFile("./data/task.json", tasks);
         });*/
-
-
-
         return this.task.remove({taskId:taskId});
     }
 
@@ -81,7 +78,11 @@ class HalaqaRepository {
             tasks.push(newTask);
             return this.utils.writeToJsonFile('./data/task.json', tasks);
         });*/
-        return this.addTaskToDb(newTask);
+        return this.task.find({}).then(tasks=>{
+            let maxId = Math.max.apply(Math, tasks.map(r => r.taskId)) + 1;
+            newTask.taskId = maxId;
+            return this.addTaskToDb(newTask);
+        })
     }
 
     updateTask(updatedTask) {
