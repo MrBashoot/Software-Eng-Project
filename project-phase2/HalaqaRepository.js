@@ -29,10 +29,10 @@ class HalaqaRepository {
         //});
         return this.parent.find({}).then(parents => {
             let students = this.utils.flattenMultiArray(parents.map(p=> p.students));
-            students=students.filter(s=>s.teacherID==teacherId);
+            students=students.filter(s=>s.teacherId==teacherId);
             return students;
         });
-        //return this.parent.find({teacherID: teacherId});
+        //return this.parent.find({teacherId: teacherId});
     }
 
     getParentStudents(parentId) {
@@ -52,9 +52,9 @@ class HalaqaRepository {
 
     getStudentTasks(studentId, taskStatus) {
         if(taskStatus=='pending')
-            return this.task.find({studentID: studentId, completedDate: null});
+            return this.task.find({studentId: studentId, completedDate: null});
         else
-            return this.task.find({studentID: studentId, completedDate: {$ne: null}});
+            return this.task.find({studentId: studentId, completedDate: {$ne: null}});
 
     }
 
