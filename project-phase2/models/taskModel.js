@@ -6,7 +6,7 @@ let mongoose = require('mongoose');
 
 let taskSchema = new mongoose.Schema({
     taskId: Number,
-    studentID: Number,
+    studentId: Number,
     surahId: Number,
     surahName: String,
     fromAya: Number,

@@ -51,10 +51,11 @@ class HalaqaRepository {
     }
 
     getStudentTasks(studentId, taskStatus) {
-        if(taskStatus=='pending')
+        if(taskStatus=='Pending')
             return this.task.find({studentId: studentId, completedDate: null});
-        else
+        else if(taskStatus=='Completed')
             return this.task.find({studentId: studentId, completedDate: {$ne: null}});
+        else  return this.task.find({studentId: studentId});
 
     }
 
