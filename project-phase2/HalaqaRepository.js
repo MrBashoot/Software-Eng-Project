@@ -82,7 +82,6 @@ class HalaqaRepository {
             return this.utils.writeToJsonFile('./data/task.json', tasks);
         });*/
 
-        //welly 5awal
         return this.task.find({}).then(tasks=>{
             let maxId = Math.max.apply(Math, tasks.map(r => r.taskId)) + 1;
             newTask.taskId = maxId;
@@ -163,7 +162,9 @@ class HalaqaRepository {
         //    parents[index].students.push(student);
         //    return this.utils.writeToJsonFile('./data/student.json', parents);
             this.parent.find({qatariId: qatariId}).then( parent => {
+                parent.students.push(newStudent);
 
+                this.parent.save({parent});
             });
 
         });
