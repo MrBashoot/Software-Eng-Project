@@ -72,12 +72,13 @@ class HalaqaRepository {
     }
 
     addTask(newTask) {
-        return this.utils.readJsonFile('./data/task.json').then(tasks => {
+        /*return this.utils.readJsonFile('./data/task.json').then(tasks => {
             let maxId = Math.max.apply(Math, tasks.map(r => r.taskId)) + 1;
             newTask.taskId = maxId;
             tasks.push(newTask);
             return this.utils.writeToJsonFile('./data/task.json', tasks);
-        });
+        });*/
+        return this.addTaskToDb(newTask);
     }
 
     updateTask(updatedTask) {
@@ -105,13 +106,14 @@ class HalaqaRepository {
     }
 
     addMessage(message) {
-        return this.utils.readJsonFile('./data/message.json').then(messages => {
+        /*return this.utils.readJsonFile('./data/message.json').then(messages => {
             let maxId = Math.max.apply(Math, messages.map(m => m.id)) + 1;
             message.id = maxId;
             messages.push(message);
 
             return this.utils.writeToJsonFile('./data/message.json', messages);
-        });
+        });*/
+        return this.addMessageToDb(message);
     }
 
     addParent(newParent) {
