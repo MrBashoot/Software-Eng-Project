@@ -96,23 +96,38 @@ class HalaqaRepository {
             return this.utils.writeToJsonFile('./data/task.json', tasks);
         });*/
         return this.task.findOne({taskId: updatedTask.taskId}, function (err, task) {
-            task=updatedTask;
-
-            task.save(function (err) {
+            task.surahId=updatedTask.surahId;
+            task.surahName=updatedTask.surahName;
+            task.fromAya=updatedTask.fromAya;
+            task.toAya=updatedTask.toAya;
+            task.dueDate=updatedTask.dueDate;
+            task.type=updatedTask.type;
+            return task.save(function (err) {
                 if(err) {
                     console.error('Couldn\'t update task!');
                 }
             });
         });
+
     }
 
     completeTask(completedTask) {
-        return this.utils.readJsonFile('./data/task.json').then(tasks => {
+        /*return this.utils.readJsonFile('./data/task.json').then(tasks => {
             let taskIndex = tasks.findIndex(t => t.taskId === completedTask.taskId);
             tasks[taskIndex].completedDate = completedTask.completedDate;
             tasks[taskIndex].masteryLevel = completedTask.masteryLevel;
             tasks[taskIndex].comment = completedTask.comment;
             return this.utils.writeToJsonFile('./data/task.json', tasks);
+        });*/
+        return this.task.findOne({taskId: completedTask.taskId}, function (err, task) {
+            task.completedDate = completedTask.completedDate;
+            task.masteryLevel = completedTask.masteryLevel;
+            task.comment = completedTask.comment;
+            return task.save(function (err) {
+                if(err) {
+                    console.error('Couldn\'t update task!');
+                }
+            });
         });
     }
 
