@@ -16,7 +16,7 @@ class HalaqaRepository {
         //    return students;
         //});
 
-        return this.parent.find({}).then(parents => {
+         this.parent.find({}).then(parents => {
             let students = this.utils.flattenMultiArray(parents.map(p=> p.students));
             return students;
         });
@@ -172,7 +172,7 @@ class HalaqaRepository {
 
     initDb() {
         //Uncomment to empty the database
-        //this.emptyDB();
+        this.emptyDB();
         //If the db is empty then init the db with data in json files
         this.getSurahs().then(surahs => {
             console.log('Surah Count: ' + surahs.length + ' comment out this.emptyDB() to stop re-initializing the database');

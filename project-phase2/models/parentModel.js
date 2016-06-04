@@ -1,8 +1,4 @@
-/**
- * Created by Ahmed on 5/30/2016.
- */
-
-'use strict';
+"use strict";
 let mongoose = require('mongoose');
 
 let parentSchema = new mongoose.Schema({
@@ -14,14 +10,14 @@ let parentSchema = new mongoose.Schema({
     username: String,
     password: String,
     students: [{
-        studentID: Number,
+        studentId: Number,
         firstName: String,
         lastName: String,
         dob: String,
         gender: String,
         schoolGrade: Number,
-        teacherID: { type : mongoose.Schema.ObjectId, ref : 'teacher' }   
+        teacherId: Number
     }]
 });
 
-module.exports = mongoose.model('parent', parentSchema); //hello world
+module.exports = mongoose.model('parent', parentSchema);

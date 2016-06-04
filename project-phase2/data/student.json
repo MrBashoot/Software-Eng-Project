@@ -27,13 +27,13 @@
         "teacherId": 502
       },
       {
+        "studentId": 7,
         "firstName": "Bint Juha 2",
         "lastName": "Dahak",
         "dob": "24/04/1999",
         "gender": "F",
         "schoolGrade": 4,
-        "teacherId": 502,
-        "studentId": 7
+        "teacherId": 502
       }
     ]
   },
@@ -106,23 +106,22 @@
     "password": "password",
     "students": [
       {
+        "studentId": 8,
         "firstName": "Bin Ahmed",
         "lastName": "Sayed",
         "dob": "12/05/2000",
         "gender": "M",
         "schoolGrade": 1,
-        "teacherId": 503,
-        "studentId": 8
+        "teacherId": 503
       },
       {
+        "studentId": 9,
         "firstName": "Manal",
         "lastName": "Sayed",
         "dob": "1/1/2009",
         "gender": "M",
         "schoolGrade": 4,
-        "teacherId": 503,
-        "parentId": 12,
-        "studentId": 9
+        "teacherId": 503
       }
     ]
   }
