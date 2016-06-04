@@ -16,9 +16,8 @@ class HalaqaRepository {
         //    return students;
         //});
 
-         this.parent.find({}).then(parents => {
-            let students = this.utils.flattenMultiArray(parents.map(p=> p.students));
-            return students;
+        return this.parent.find({}).then(parents => {
+            return this.utils.flattenMultiArray(parents.map(p=> p.students));
         });
     }
 

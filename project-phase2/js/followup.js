@@ -27,7 +27,7 @@ $(document).ready(function () {
 });
 
 function getStudents() {
-    let url = '/api/students'
+    let url = '/api/students';
     if (userType === 'Parent') {
         url = `/api/parents/${parentId}/students`;
     }
