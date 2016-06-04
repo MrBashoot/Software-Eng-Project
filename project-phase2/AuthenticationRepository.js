@@ -24,7 +24,7 @@ class AuthenticationRepository {
                                 name: `${staff.firstName} ${staff.lastName}`
                             };
 
-                            if (staff.isCoordinator === 1) {
+                            if (staff.isCoordinator) {
                                 userInfo.type = 'Coordinator';
                                 userInfo.redirectTo = '/followup.html';
                             } else {
