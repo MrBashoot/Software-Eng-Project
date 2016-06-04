@@ -185,6 +185,7 @@ function initTaskForm(selectedTask, surahs) {
     fillSurahsDD(surahs);
     
     if (selectedTask) {
+        console.log(selectedTask);
         $('#surahsDD').val(selectedTask.surahId);
         $('#dueDate').val(getDate(selectedTask.dueDate));
 

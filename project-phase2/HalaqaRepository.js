@@ -59,7 +59,7 @@ class HalaqaRepository {
     }
 
     getTask(taskId) {
-        return this.task.find({taskId: taskId});
+        return this.task.findOne({taskId: taskId});
     }
 
     deleteTask(taskId) {
