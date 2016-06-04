@@ -81,10 +81,19 @@ class HalaqaRepository {
     }
 
     updateTask(updatedTask) {
-        return this.utils.readJsonFile('./data/task.json').then(tasks => {
+        /*return this.utils.readJsonFile('./data/task.json').then(tasks => {
             let taskIndex = tasks.findIndex(t => t.taskId === updatedTask.taskId);
             tasks[taskIndex] = updatedTask;
             return this.utils.writeToJsonFile('./data/task.json', tasks);
+        });*/
+        return this.task.findOne({taskId: updatedTask.taskId}, function (err, task) {
+            task=updatedTask;
+
+            task.save(function (err) {
+                if(err) {
+                    console.error('Couldn\'t update task!');
+                }
+            });
         });
     }
 
