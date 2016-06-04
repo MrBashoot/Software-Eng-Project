@@ -83,7 +83,7 @@ class HalaqaRepository {
         });*/
 
         //welly 5awal
-        return this.getTasks().then(tasks=>{
+        return this.task.find({}).then(tasks=>{
             let maxId = Math.max.apply(Math, tasks.map(r => r.taskId)) + 1;
             newTask.taskId = maxId;
             return this.addTaskToDb(newTask);
