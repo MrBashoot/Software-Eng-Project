@@ -12,8 +12,8 @@ let taskSchema = new mongoose.Schema({
     fromAya: Number,
     toAya: Number,
     type: String,
-    dueDate: Date,
-    completedDate: Date,
+    dueDate: String,
+    completedDate: String,
     masteryLevel: String,
     comment: String
 });
