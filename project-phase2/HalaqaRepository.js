@@ -63,11 +63,15 @@ class HalaqaRepository {
     }
 
     deleteTask(taskId) {
-        return this.utils.readJsonFile('./data/task.json').then(tasks => {
+      /*  return this.utils.readJsonFile('./data/task.json').then(tasks => {
             let taskIndex = tasks.findIndex(t => t.taskId === taskId);
             tasks.splice(taskIndex, 1);
             return this.utils.writeToJsonFile("./data/task.json", tasks);
-        });
+        });*/
+
+
+
+        return this.task.remove({taskId:taskId});
     }
 
     addTask(newTask) {
