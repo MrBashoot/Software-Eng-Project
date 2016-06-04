@@ -68,6 +68,9 @@ class HalaqaRepository {
             tasks.splice(taskIndex, 1);
             return this.utils.writeToJsonFile("./data/task.json", tasks);
         });*/
+
+
+
         return this.task.remove({taskId:taskId});
     }
 
@@ -78,7 +81,9 @@ class HalaqaRepository {
             tasks.push(newTask);
             return this.utils.writeToJsonFile('./data/task.json', tasks);
         });*/
-        return this.task.find({}).then(tasks=>{
+
+        //welly 5awal
+        return this.getTasks().then(tasks=>{
             let maxId = Math.max.apply(Math, tasks.map(r => r.taskId)) + 1;
             newTask.taskId = maxId;
             return this.addTaskToDb(newTask);
@@ -149,14 +154,18 @@ class HalaqaRepository {
     }
 
     /*Register new children with existing parent*/
-    addStudent(student, qatariId) {
+    addStudent(newStudent, qatariId) {
         return this.generateStudentId().then(id => {
-            student.studentId = id;
-            return this.utils.readJsonFile('./data/student.json');
-        }).then(parents => {
-            let index = parents.findIndex(p => p.qatariId === qatariId);
-            parents[index].students.push(student);
-            return this.utils.writeToJsonFile('./data/student.json', parents);
+            newStudent.studentId = id;
+        //    return this.utils.readJsonFile('./data/student.json');
+        //}).then(parents => {
+        //    let index = parents.findIndex(p => p.qatariId === qatariId);
+        //    parents[index].students.push(student);
+        //    return this.utils.writeToJsonFile('./data/student.json', parents);
+            this.parent.find({qatariId: qatariId}).then( parent => {
+
+            });
+
         });
     }
 
