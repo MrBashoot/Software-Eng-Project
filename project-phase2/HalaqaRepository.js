@@ -40,7 +40,7 @@ class HalaqaRepository {
         //    return parents[0].students;
         //});
 
-        this.parent.findOne({qatariId: parentId}).then(parent =>{
+        return this.parent.findOne({qatariId: parentId}).then(parent =>{
             return parent.students;
         });
     }
