@@ -6,6 +6,7 @@ let messageSchema = new mongoose.Schema({
     studentId: String,
     subject: String,
     message: String,
-    date: String
+    date: String,
+    imageUrl: String
 });
 module.exports = mongoose.model('message', messageSchema);

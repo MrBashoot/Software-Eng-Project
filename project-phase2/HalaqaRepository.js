@@ -131,9 +131,7 @@ class HalaqaRepository {
     }
 
     getMessages(studentId) {
-        return this.utils.readJsonFile('./data/message.json').then(messages => {
-            return messages.filter(m=> m.studentId === studentId);
-        });
+        return this.message.find({studentId: studentId});
     }
 
     addMessage(message) {
@@ -149,6 +147,7 @@ class HalaqaRepository {
 
     addParent(newParent) {
         //console.log("addParent.newParent", newParent);
+        console.log(newParent);
         let newId;
         return this.generateStudentId().then(id => {
             newId = id;
@@ -162,12 +161,14 @@ class HalaqaRepository {
             if (newParent.students){
                 newParent.students[0].studentId = newId;
             }
-            return this.parent.create({newParent});
+            console.log(newParent);
+            return this.parent.create(newParent);
         });
     }
 
     /*Register new children with existing parent*/
     addStudent(newStudent, qatariId) {
+        console.log(qatariId,newStudent);
         return this.generateStudentId().then(id => {
             newStudent.studentId = id;
         //    return this.utils.readJsonFile('./data/student.json');
@@ -175,10 +176,14 @@ class HalaqaRepository {
         //    let index = parents.findIndex(p => p.qatariId === qatariId);
         //    parents[index].students.push(student);
         //    return this.utils.writeToJsonFile('./data/student.json', parents);
-            this.parent.find({qatariId: qatariId}).then( parent => {
-                parent.students.push(newStudent);
-
-                this.parent.save({parent});
+            this.parent.findOne({qatariId: qatariId}).then( prnt => {
+                prnt.students.push(newStudent);
+                console.log(prnt);
+                return prnt.save(function (err) {
+                    if(err) {
+                        console.error('Couldn\'t update parent!');
+                    }
+                });
             });
 
         });
