@@ -28,7 +28,7 @@ function onReturn(){
         userId: userId
     };
 
-    let url = "http://192.168.100.2:9090/api/items/return";
+    let url = "http://192.168.100.9:9090/api/items/return";
     fetch(url, {
         method: "put",
         headers: {
@@ -58,7 +58,7 @@ function onBorrow(){
             userId: userId
         };
 
-        let url = "http://localhost:9090/api/items/borrow";
+        let url = "http://192.168.100.9:9090/api/items/borrow";
         fetch(url, {
             method: "put",
             headers: {
@@ -112,17 +112,17 @@ function onReturnSelected(element){
 }
 
 function getUser(username){
-    let url= 'http://192.168.100.2:9090/api/users/' + username;
+    let url= 'http://192.168.100.9:9090/api/users/' + username;
     return fetch(url).then(response => response.json());
 }
 
 function getAllItems(){
-    let url= 'http://192.168.100.2:9090/api/items';
+    let url= 'http://192.168.100.9:9090/api/items';
     return fetch(url).then(response => response.json());
 }
 
 function getBorrowedItems(username){
-    let url = 'http://192.168.100.2:9090/api/items/' + username;
+    let url = 'http://192.168.100.9:9090/api/items/' + username;
     return fetch(url).then(response => response.json());
 }
 

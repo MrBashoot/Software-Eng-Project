@@ -198,7 +198,7 @@ class HalaqaRepository {
     }
 
     getParents() {
-        return this.utils.readJsonFile('./data/student.json').then(parents => {
+        return this.parent.find({}).then(parents => {
             for(let parent of parents) {
                 delete parent.students;
             };

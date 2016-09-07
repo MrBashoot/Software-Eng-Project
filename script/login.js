@@ -18,7 +18,7 @@ function login(event){
         password: loginPassword
     };
 
-    let url = 'http://localhost:9090/api/users/login';
+    let url = 'http://192.168.100.9:9090/api/users/login';
 
     fetch(url, {
         method: "post",
